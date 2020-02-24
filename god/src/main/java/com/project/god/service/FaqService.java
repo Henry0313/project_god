@@ -19,7 +19,7 @@ public interface FaqService {
 	/**
 	 * 글쓰기 Faq
 	 * 
-	 * @param faqVO
+	 * @param faqVO faq객체
 	 * @return 전체 게시판
 	 * 
 	 */
@@ -65,7 +65,6 @@ public interface FaqService {
 	 * 
 	 * @param faqId 게시글 번호
 	 * @param session 세션
-	 * @return 업데이트 성공 여부
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -92,8 +91,7 @@ public interface FaqService {
 	/**
 	 * 게시글 수정
 	 * 
-	 * @param FaqVO 게시판 객체
-	 * @return 수정 레코드(record, row) 개수
+	 * @param faqVO 게시판 객체
 	 * @throws Exception 예외처리
      * 
      */
@@ -103,7 +101,6 @@ public interface FaqService {
 	 * 게시글 삭제
 	 * 
 	 * @param faqId 게시글 번호
-	 * @return 삭제 레코드(record, row) 개수
 	 * @throws Exception 예외처리
      * 
      */
@@ -117,8 +114,7 @@ public interface FaqService {
 	 * @param searchWord 검색단어
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
-	 * @return 검색 결과 게시글 객체
+	 * @return faqVO 검색 결과 게시글 객체
 	 * 
 	 */
 	List<FaqVO> getFaqBySearch(String searchDate,
@@ -133,7 +129,6 @@ public interface FaqService {
 	 * @param searchDate 검색기간
 	 * @param searchKind 검색종류
 	 * @param searchWord 검색단어
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 전체 게시글 수
 	 * 
 	 */

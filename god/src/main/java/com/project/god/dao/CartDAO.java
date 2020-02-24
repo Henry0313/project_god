@@ -16,8 +16,7 @@ public interface CartDAO {
 	/**
 	 * 카트 담기
 	 * 
-	 * @param CartVO 카트 객체
-	 * @return 카트에 담을 객체
+	 * @param cartVO 카트 객체
 	 * 
 	 */
 	void addCart(CartVO cartVO);
@@ -26,19 +25,25 @@ public interface CartDAO {
 	 * 카트 리스트
 	 * 
 	 * @param memberId 회원 아이디
-	 * @param cartId 카트번호
-	 * @return 카트 리스트 객체
+	 * @return cartListVO 카트 리스트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
 	public List<CartListVO> cartList(String memberId) throws Exception;
+	
+	/**
+	 * 카트 리스트
+	 * 
+	 * @param cartId 카트번호
+	 * @return cartListVO 카트 리스트 객체
+	 * @throws Exception 예외처리
+	 */
 	public List<CartListVO> cartList3(int cartId) throws Exception;
 	
 	/**
 	 * 카트 삭제
 	 * 
 	 * @param cartId 카트 번호
-	 * @return 삭제할 카트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -48,7 +53,6 @@ public interface CartDAO {
 	 * 카트 비우기
 	 * 
 	 * @param memberId 회원 아이디
-	 * @return 현재 접속한 아이디에 있는 카트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -58,7 +62,6 @@ public interface CartDAO {
 	 * 카트 수정
 	 * 
 	 * @param cartVO 카트 객체
-	 * @return 수정할 카트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -84,7 +87,7 @@ public interface CartDAO {
 	 * 개별 카트 조회
 	 * 
 	 * @param cartVO 카트 객체
-	 * @return 카트 객체
+	 * @return cartVO 카트 객체
 	 * @throws Exception 예외처리
 	 */
 	CartListVO getCart(CartVO cartVO) throws Exception;

@@ -25,7 +25,7 @@ import com.project.god.service.QnaProductService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 관리자 Q&A 상품관리 게시판 컨트롤러
+ * 관리자 QnA 상품관리 게시판 컨트롤러
  * 
  * @author god
  *

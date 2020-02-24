@@ -3,10 +3,7 @@
  */
 package com.project.god;
 
-import static org.junit.Assert.*;
-
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NavigableSet;
 import java.util.TreeSet;
@@ -21,9 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.domain.CartListVO;
 import com.project.god.domain.CartVO;
-import com.project.god.domain.FaqVO;
 import com.project.god.service.CartService;
-import com.project.god.service.FaqService;
 
 import lombok.extern.slf4j.Slf4j;
 

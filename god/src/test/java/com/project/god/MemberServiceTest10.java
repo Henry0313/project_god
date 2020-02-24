@@ -17,7 +17,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.domain.MemberVO;
 import com.project.god.domain.SearchMemberVO;
-import com.project.god.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 

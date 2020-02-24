@@ -3,10 +3,6 @@
  */
 package com.project.god;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,8 +32,6 @@ public class QnaProductServiceTest {
 
 	@Autowired
 	private QnaProductService qnaProductService;
-	
-	private QnaProductVO qnaProductVO;
 	
 	/**
 	 * @throws java.lang.Exception

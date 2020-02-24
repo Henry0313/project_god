@@ -18,8 +18,7 @@ public interface CartService {
 	/**
 	 * 카트 담기
 	 * 
-	 * @param CartVO 카트 객체
-	 * @return 카트에 담을 객체
+	 * @param cartVO 카트 객체
 	 * 
 	 */
 	void addCart(CartVO cartVO);
@@ -27,8 +26,8 @@ public interface CartService {
 	/**
 	 * 카트 리스트
 	 * 
-	 * @param CartListVO 카트 리스트 객체
-	 * @return 카트 리스트
+	 * @param memberId 회원아이디
+	 * @return cartListVO 카트 리스트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -37,8 +36,8 @@ public interface CartService {
 	/**
 	 * 카트 리스트
 	 * 
-	 * @param CartListVO 카트 리스트 객체
-	 * @return 카트 리스트
+	 * @param cartId 카트아이디
+	 * @return cartListVO 카트 리스트 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -69,7 +68,6 @@ public interface CartService {
 	 * 카트 비우기
 	 * 
 	 * @param memberId 회원 아이디
-	 * @return 카트 비우기
 	 * @throws Exception 예외처리
 	 * 
 	 */

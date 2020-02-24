@@ -12,7 +12,6 @@ public interface ProductMapper {
 	 * 상품등록 Product
 	 * 
 	 * @param productVO 객체
-	 * @return 상품등록 페이지
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -46,6 +45,7 @@ public interface ProductMapper {
 	/**
 	 * 카테고리별 상품 목록 수
 	 * 
+	 * @param cateCode 카테고리 코드
 	 * @return 카테고리별 상품 목록 수
 	 */
 	int getCateProductListCount(String cateCode);
@@ -57,11 +57,11 @@ public interface ProductMapper {
 	 * @param searchDate1 검색 시작 날짜
 	 * @param searchDate2 검색 끝 날짜
 	 * @param searchInfo 검색 상품 진열 상태
+	 * @param searchPrice1 원가
+	 * @param searchPrice2 판매가
+	 * @param rowsPerPage 페이지당 행 수
 	 * @param page 페이지
-     * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
-	 * @return 검색 결과 상품 객체
-	 * 
+	 * @return productVO 상품 객체
 	 */
 	List<ProductVO> getProductBySearch(@Param("searchWord") String searchWord,
 									   @Param("searchDate1") String searchDate1,
@@ -79,9 +79,9 @@ public interface ProductMapper {
 	 * @param searchDate1 검색 시작 날짜
 	 * @param searchDate2 검색 끝 날짜
 	 * @param searchInfo 검색 상품 진열 상태
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
-	 * @return 검색 결과 전체 상품 수
-	 * 
+	 * @param searchPrice1 원가
+	 * @param searchPrice2 판매가
+	 * @return 검색 결과
 	 */
 	int getAllProductsBySearch(@Param("searchWord") String searchWord,
 							   @Param("searchDate1") String searchDate1,
@@ -93,17 +93,18 @@ public interface ProductMapper {
 	/**
 	 * Category List
 	 * 
-	 * @return 카테고리 목록
+	 * @return productVO 상품 객체
 	 * 
 	 */
 	List<ProductVO> getCategoryList();
 	
 	/**
-	 * 카테고리별 상품 리스트
 	 * 
-	 * @param cateName
-	 * @return 카테고리별 리스트 페이지
-	 * @throws Exception
+	 * @param page 페이지
+	 * @param rowsPerPage 페이지당 행수
+	 * @param cateCode 카테고리 코드
+	 * @return productVO 상품 객체
+	 * @throws Exception 예외처리
 	 */
 	public List<ProductVO> getCateProductList(@Param("page") int page, 
 											  @Param("rowsPerPage") int rowsPerPage, 

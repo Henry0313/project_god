@@ -65,7 +65,7 @@ public class ProductVO {
 	private String cateCode;
 	
 	
-	/** ProductDTO -> ProductVO */
+	/** ProductDTO -} ProductVO */
 	public ProductVO(ProductDTO product) {
 		
 		this.productId = product.getProductId();

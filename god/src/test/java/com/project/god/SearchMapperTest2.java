@@ -10,14 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.domain.MemberVO;
 import com.project.god.domain.SearchMemberVO;
-import com.project.god.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 

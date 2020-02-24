@@ -18,7 +18,6 @@ public interface QnaProductDAO {
 	 * 글쓰기 QnaProduct
 	 * 
 	 * @param qnaProductVO 상품문의 객체
-	 * @return 작성된 상품문의 게시글
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -99,8 +98,7 @@ public interface QnaProductDAO {
 	/**
 	 * 게시글 수정
 	 * 
-	 * @param QnaProductVO 게시판 객체
-	 * @return 수정 레코드(record, row) 개수
+	 * @param qnaProductVO 게시판 객체
 	 * @throws Exception 예외처리
      * 
      */
@@ -110,7 +108,6 @@ public interface QnaProductDAO {
 	 * 게시글 삭제
 	 * 
 	 * @param qnaProductId 게시글 번호
-	 * @return 삭제 레코드(record, row)개수
 	 * @throws Exception 예외처리
      * 
      */
@@ -124,8 +121,7 @@ public interface QnaProductDAO {
 	 * @param searchWord 검색단어
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
-	 * @return 검색 결과 게시글 객체
+	 * @return qnaProductVO 검색 결과 게시글 객체
 	 * 
 	 */
 	List<QnaProductVO> getQnaProductBySearch(String searchDate,
@@ -140,7 +136,6 @@ public interface QnaProductDAO {
 	 * @param searchDate 검색기간
 	 * @param searchKind 검색종류
 	 * @param searchWord 검색단어
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 전체 게시글 수
 	 * 
 	 */
@@ -163,7 +158,6 @@ public interface QnaProductDAO {
 	 * 
 	 * @param qnaProductReRef 관련글 번호
 	 * @param qnaProductReSeq 관련글 중 출력 순서
-	 * @return 답변 게시글 원글 및 게시글 순서 수정
 	 * @throws Exception 예외처리
 	 */
 	void updateQnaProductByRefAndSeq(int qnaProductReRef, int qnaProductReSeq) throws Exception;

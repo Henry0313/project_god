@@ -18,8 +18,7 @@ public interface MemberDAO {
     /**
      * 회원정보 레코드(튜플) 삽입(create)
      *
-     * @param member 회원정보
-     * @return 회원정보
+     * @param memberVO 회원정보 객체
      * @throws Exception 예외처리
      */
     void insertMember(MemberVO memberVO) throws Exception;
@@ -27,8 +26,7 @@ public interface MemberDAO {
     /**
      * 회원등급 레코드(튜플) 삽입(create)
      *
-     * @param role 회원 롤 정보
-     * @return 회원등급 정보
+     * @param roleVO 회원 롤 정보 객체
      * @throws Exception 예외처리
      */
     void insertRole(RoleVO roleVO) throws Exception;
@@ -36,7 +34,7 @@ public interface MemberDAO {
     /**
      * 전체 회원정보  레코드(튜플) 조회(read)
      *
-     * @return 전체 회원정보
+     * @return memberVO 전체 회원정보 객체
      * @throws Exception 예외처리
      */
     List<MemberVO> getAllMembers() throws Exception;
@@ -46,7 +44,6 @@ public interface MemberDAO {
      *
      * @param memberId 회원 아이디
      * @return 회원정보
-     * @throws Exception 예외처리
      */
     MemberVO getMember(String memberId);
     
@@ -97,7 +94,8 @@ public interface MemberDAO {
 	 * 연락처가 타 회원들과 중복하지 않고 사용가능한지 여부 점검
 	 * 
 	 * usage) 회원 가입 핸드폰 연락처 중복 점검
-	 * 
+	 *
+	 * @param id 회원아이디
 	 * @param Cellphone 핸드폰연락처
 	 * @return 연락처 사용가능 여부
 	 * @throws Exception 예외처리
@@ -109,7 +107,6 @@ public interface MemberDAO {
 	 * 
 	 * usage) 회원 가입 핸드폰 연락처 중복 점검
 	 * 
-	 * @param id 회원 아이디
 	 * @param Cellphone 핸드폰연락처
 	 * @return 연락처 사용가능 여부 : true=사용가능, false=사용불가
 	 * @throws Exception 예외처리
@@ -119,8 +116,7 @@ public interface MemberDAO {
 	/**
 	 * 개별 회원정보 레코드(튜플)수정(갱신)(update)
 	 * 
-	 * @param memberVO 회원정보
-	 * @return 저장 오류 메시지
+	 * @param memberVO 회원정보 객체
 	 * @throws Exception 예외처리
 	 */
 	void updateMember(MemberVO memberVO) throws Exception;
@@ -159,6 +155,7 @@ public interface MemberDAO {
 	 * @param name 회원 이름
 	 * @param searchField 검색필드 (이메일 또는 전화번호)
 	 * @param searchValue 검색값 (이메일 또는 전화번호 값)
+	 * @return memberVO 회원정보 객체
 	 * @throws Exception 예외처리
 	 */
 	MemberVO getMemberPwByInfo(String id, String name, String searchField, String searchValue) throws Exception;
@@ -166,7 +163,7 @@ public interface MemberDAO {
 	/**
 	 * 회원 패쓰워드 찾기 후 비밀번호 변경(아이디, 패쓰워드)
 	 * 
-	 * @param memberVO 회원정보
+	 * @param memberVO 회원정보 객체
 	 * @throws Exception 예외처리
 	 */
 	void pwUpdate(MemberVO memberVO)throws Exception;

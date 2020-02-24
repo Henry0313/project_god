@@ -16,7 +16,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.dao.MemberDAO;
 import com.project.god.domain.MemberVO;
-import com.project.god.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,9 +35,6 @@ public class MemberDAOTest {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@Autowired
-	private MemberDAO memberDao;
 	
 	private MemberVO memberVO;
 	
@@ -76,8 +72,6 @@ public class MemberDAOTest {
 		/*
 		 * boolean flag2 = memberDao.isEnableEmail(id, email); assertTrue(flag2);
 		 */
-		
-		
 		
 	}
 

@@ -23,7 +23,6 @@ public interface ProductService {
 	 * 상품등록 Product
 	 * 
 	 * @param productVO 객체
-	 * @return 상품등록 페이지
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -50,8 +49,8 @@ public interface ProductService {
 	 * 상품 보기
 	 * 
 	 * @param productId 상품 번호
-	 * @return 상품 정보
-	 * 
+	 * @return productVO 상품 객체
+	 * @throws Exception 예외처리
 	 */
 	public ProductVO getProduct(int productId) throws Exception;
 	
@@ -60,7 +59,6 @@ public interface ProductService {
 	 * 
 	 * @param productId 상품 번호
 	 * @param session 세션
-	 * @return 업데이트 성공 여부
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -94,7 +92,6 @@ public interface ProductService {
 	 * @param searchPrice2 검색 끝 가격
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 상품 객체
 	 * 
 	 */
@@ -116,7 +113,6 @@ public interface ProductService {
 	 * @param searchInfo 검색 상품 진열 상태
 	 * @param searchPrice1 검색 시작 가격
 	 * @param searchPrice2 검색 끝 가격
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 전체 상품 수
 	 * 
 	 */
@@ -151,7 +147,6 @@ public interface ProductService {
 	 * 상품 삭제
 	 * 
 	 * @param productVO 상품 객체
-	 * @return 상품 삭제
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -161,7 +156,6 @@ public interface ProductService {
 	 * 상품 수정
 	 * 
 	 * @param productDTO 상품 객체
-	 * @return 상품 수정
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -171,7 +165,6 @@ public interface ProductService {
 	 * 상품 진열 여부 수정 (하단 버튼)
 	 * 
 	 * @param productDTO 상품 객체
-	 * @return 상품 수정
 	 * @throws Exception 예외처리
 	 * 
 	 */

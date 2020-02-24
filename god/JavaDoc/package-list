@@ -1,0 +1,11 @@
+com.project.god
+com.project.god.admin.controller
+com.project.god.board.controller
+com.project.god.controller
+com.project.god.dao
+com.project.god.domain
+com.project.god.mapper
+com.project.god.member.controller
+com.project.god.service
+com.project.god.service.impl
+com.project.god.util

@@ -3,10 +3,6 @@
  */
 package com.project.god;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;

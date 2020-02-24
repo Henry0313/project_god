@@ -19,7 +19,6 @@ public interface OrderService {
 	 * 주문 정보
 	 * 
 	 * @param orderVO 주문 객체
-	 * @return 주문 정보
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -29,7 +28,6 @@ public interface OrderService {
 	 * 주문 상세 정보
 	 * 
 	 * @param orderDetailVO 주문상세 객체
-	 * @return 주문 상세 정보
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -38,8 +36,8 @@ public interface OrderService {
 	/**
 	 * 주문 목록
 	 * 
-	 * @param orderVO 주문 객체
-	 * @return 주문 목록
+	 * @param memberId 회원 아이디
+	 * @return orderDetailVO 주문 상세 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -59,8 +57,8 @@ public interface OrderService {
 	 * 전체 주문조회
 	 * 
 	 * @param page 페이지
-	 * @param rowsPage 페이지 당 행수
-	 * @return 저장오류메세지
+	 * @param rowsPerPage 페이지 당 행수
+	 * @return orderVO 주문 객체 목록
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -69,7 +67,7 @@ public interface OrderService {
 	/**
 	 * 상세주문조회
 	 * @param orderId 주문번호
-	 * @return 저장오류메시지
+	 * @return orderDetailVO 주문상세 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -78,8 +76,7 @@ public interface OrderService {
 	/**
 	 * 주문상태처리
 	 * 
-	 * @param orderVO (아이디, 주문상태처리)
-	 * @return 주문 상태
+	 * @param orderVO 주문 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -88,8 +85,7 @@ public interface OrderService {
 	/**
 	 * 주문 배송 중일때 해당 구매상품 재고 감소
 	 * 
-	 * @param productVO 상품 정보
-	 * @return 해당 구매 상품 재고
+	 * @param productVO 상품 객체
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -99,6 +95,7 @@ public interface OrderService {
 	 * 주문 목록 개수
 	 * 
 	 * @return 주문 목록 개수
+	 * 
 	 */
 	int getOrderListCount();
 	

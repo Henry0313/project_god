@@ -28,7 +28,7 @@ public class FaqVO {
 	/** 조회수 */
 	private int faqReadCount = 0;
 	
-	/** FaqDTO -> FaqVO */
+	/** FaqDTO -} FaqVO */
     public FaqVO(FaqDTO faq) {
        
         this.faqId = faq.getFaqId();

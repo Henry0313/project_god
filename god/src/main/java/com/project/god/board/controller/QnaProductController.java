@@ -23,7 +23,7 @@ import com.project.god.service.QnaProductService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Q&A 상품문의 컨트롤러
+ * QnA 상품문의 컨트롤러
  * 
  * @author god
  *

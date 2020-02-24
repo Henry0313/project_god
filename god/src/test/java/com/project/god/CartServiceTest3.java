@@ -42,10 +42,6 @@ public class CartServiceTest3 {
 	@Autowired
 	private CartDAO cartDAO;
 	
-	@Autowired
-	private CartService cartService;
-	
-	
 	/**
 	 * @throws java.lang.Exception
 	 */

@@ -10,7 +10,6 @@ public class BoardNameMatchingUtil {
 	
 	/**
 	 * 게시판 이름을 통해서 게시판 테이블명을 가져온다
-	 * ex) 상품 문의 -> qna_product
 	 * 
 	 * @param boardName 게시판이름
 	 * @return 테이블명

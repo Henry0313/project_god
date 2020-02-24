@@ -3,10 +3,7 @@
  */
 package com.project.god;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.Date;
-import java.util.List;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
@@ -19,9 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.dao.CartDAO;
-import com.project.god.domain.CartListVO;
 import com.project.god.domain.CartVO;
-import com.project.god.service.CartService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,14 +35,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CartServiceTest4 {
 
 	@Autowired
-	private CartService cartService;
-	
-	@Autowired
 	private CartDAO cartDAO;
 	
 	private CartVO cartVO;
-	
-	private List<CartListVO> cartVOList;
 	
 	private NavigableSet<CartVO> carts;
 	

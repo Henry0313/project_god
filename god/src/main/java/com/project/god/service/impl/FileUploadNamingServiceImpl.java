@@ -17,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 public class FileUploadNamingServiceImpl implements FileUploadNamingService {
 	
 	/**
-	 * @see com.javateam.spring_board.util.FileUploadNamingService
 	 * #parseFilePostfix(int, java.lang.String)
 	 */
 	@Override

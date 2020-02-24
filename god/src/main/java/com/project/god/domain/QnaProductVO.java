@@ -56,7 +56,7 @@ public class QnaProductVO {
 	private int nextId;
 	
 	
-	/** QnaProductDTO -> QnaProductVO */
+	/** QnaProductDTO -} QnaProductVO */
     public QnaProductVO(QnaProductDTO qnaProduct) {
        
         this.qnaProductId = qnaProduct.getQnaProductId();

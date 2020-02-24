@@ -18,7 +18,6 @@ public interface QnaProductService {
 	 * 글쓰기 QnaProduct
 	 * 
 	 * @param qnaProductVO 상품문의 객체
-	 * @return 전체 게시판
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -75,7 +74,6 @@ public interface QnaProductService {
 	 * 게시글 조회수 증가
 	 * 
 	 * @param qnaProductId 게시글 번호
-	 * @return 업데이트 성공 여부
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -100,8 +98,7 @@ public interface QnaProductService {
 	/**
 	 * 게시글 수정
 	 * 
-	 * @param QnaProductVO 게시판 객체
-	 * @return 수정 레코드(record, row) 개수
+	 * @param qnaProductVO 게시판 객체
 	 * @throws Exception 예외처리
      * 
      */
@@ -111,7 +108,6 @@ public interface QnaProductService {
 	 * 게시글 삭제
 	 * 
 	 * @param qnaProductId 게시글 번호
-	 * @return 삭제 레코드(record, row) 개수
 	 * @throws Exception 예외처리
      * 
      */
@@ -125,7 +121,6 @@ public interface QnaProductService {
 	 * @param searchWord 검색단어
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 게시글 객체
 	 * 
 	 */
@@ -141,7 +136,6 @@ public interface QnaProductService {
 	 * @param searchDate 검색기간
 	 * @param searchKind 검색종류
 	 * @param searchWord 검색단어
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 전체 게시글 수
 	 * 
 	 */

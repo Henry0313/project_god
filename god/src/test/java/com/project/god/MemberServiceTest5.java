@@ -5,7 +5,6 @@ package com.project.god;
 
 import static org.junit.Assert.*;
 
-import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,9 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @WebAppConfiguration
 @Slf4j
 public class MemberServiceTest5 {
-	
-	@Autowired
-	private SqlSession sqlSession;
 	
 	@Autowired
 	private MemberService memberService;
@@ -73,10 +69,8 @@ public class MemberServiceTest5 {
 		 * assertFalse(flag);
 		 */
 
-		
 		 boolean flag = memberService.isEnableCellphone(id, cellphone); 
 		 assertFalse(flag);
-		 
 		
 	}
 

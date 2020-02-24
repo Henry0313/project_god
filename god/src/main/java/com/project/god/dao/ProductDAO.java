@@ -20,7 +20,6 @@ public interface ProductDAO {
 	 * 상품등록 Product
 	 * 
 	 * @param productVO 객체
-	 * @return 상품 정보
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -56,7 +55,6 @@ public interface ProductDAO {
 	 * 상품 조회수 증가
 	 * 
 	 * @param productId 상품 번호
-	 * @return 상품 조회수 +1
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -90,7 +88,6 @@ public interface ProductDAO {
 	 * @param searchPrice2 검색 가격 끝
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 상품 객체
 	 * 
 	 */
@@ -112,7 +109,6 @@ public interface ProductDAO {
 	 * @param searchInfo 검색 상품 진열 상태
 	 * @param searchPrice1 검색 가격 시작
 	 * @param searchPrice2 검색 가격 끝
-	 * @param isLike 유사 검색(Like) 여부 usage) 유사 검색 : true, 동등 검색 : false
 	 * @return 검색 결과 전체 상품 수
 	 * 
 	 */
@@ -126,7 +122,7 @@ public interface ProductDAO {
 	/**
 	 * Category List
 	 * 
-	 * @return 카테고리 목록
+	 * @return categoryVO 카테고리 객체 목록
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -138,8 +134,8 @@ public interface ProductDAO {
 	 * @param cateCode 카테고리 코드
 	 * @param page 페이지
      * @param rowsPerPage 페이지 당 행수
-	 * @return 카테고리별 리스트 페이지
-	 * @throws Exception
+	 * @return productVO 카테고리 객체 리스트 페이지
+	 * @throws Exception 예외처리
 	 */
 	public List<ProductVO> getCateProductList(int page, int rowsPerPage, String cateCode) throws Exception;
 	
@@ -147,7 +143,6 @@ public interface ProductDAO {
 	 * 상품 삭제
 	 * 
 	 * @param productVO 상품 객체
-	 * @return 상품 정보 삭제
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -157,7 +152,6 @@ public interface ProductDAO {
 	 * 상품 수정
 	 * 
 	 * @param productDTO 상품 객체
-	 * @return 상품 수정
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -167,7 +161,6 @@ public interface ProductDAO {
 	 * 상품 진열 여부 수정 (하단 버튼)
 	 * 
 	 * @param productDTO 상품 객체
-	 * @return 상품 수정
 	 * @throws Exception 예외처리
 	 * 
 	 */

@@ -8,14 +8,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.domain.MemberVO;
-import com.project.god.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,19 +30,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberServiceTest9 {
 
-	@Autowired
-	private MemberService memberService;
-	
 	private MemberVO memberVO;
 	
 	private String id;
-	private String pw;
+//	private String pw;
 	private String name;
-	private String zip;
-	private String addr;
-	private String addrDetail;
-	private String phone;
-	private String cellPhone;
+//	private String zip;
+//	private String addr;
+//	private String addrDetail;
+//	private String phone;
+//	private String cellPhone;
 	private String email;
 	//private String 
 	

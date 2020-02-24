@@ -97,7 +97,7 @@ public interface MemberService {
 	 * 
 	 * usage) 회원 가입 핸드폰 연락처 중복 점검
 	 * 
-	 * @param Cellphone 핸드폰연락처
+	 * @param cellphone 핸드폰연락처
 	 * @return 연락처 사용가능 여부
 	 * @throws Exception 예외처리
 	 */
@@ -109,7 +109,7 @@ public interface MemberService {
 	 * usage) 회원 가입 핸드폰 연락처 중복 점검
 	 * 
 	 * @param id 회원아이디
-	 * @param Cellphone 핸드폰연락처
+	 * @param cellphone 핸드폰연락처
 	 * @return 연락처 사용가능 여부 : true=사용가능, false=사용불가
 	 * @throws Exception 예외처리
 	 */

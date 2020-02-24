@@ -20,7 +20,6 @@ public interface OrderDAO {
 	 * 주문 정보
 	 * 
 	 * @param orderVO 주문 객체
-	 * @return 주문 정보
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -30,7 +29,6 @@ public interface OrderDAO {
 	 * 주문 상세 정보
 	 * 
 	 * @param orderDetailVO 주문 상세정보 객체
-	 * @return 주문 상세정보
 	 * @throws Exception 예외처리
 	 * 
 	 */
@@ -40,7 +38,7 @@ public interface OrderDAO {
 	 * 주문 아이디 하나씩만 가져오기
 	 * 
 	 * @param memberId 회원 아이디
-	 * @return 주문 아이디
+	 * @return orderId 주문 아이디
 	 * @throws Exception 예외처리
 	 */
 	public List<OrderVO> orderListId(String memberId) throws Exception;
@@ -49,8 +47,8 @@ public interface OrderDAO {
 	 * 전체 주문목록 (이용자)
 	 * 
 	 * @param memberId 회원 아이디
-	 * @return 전체 주문목록
-	 * @throws Exception
+	 * @return orderDetailVO 주문 상세 객체 목록
+	 * @throws Exception 예외처리
 	 */
 	public List<OrderDetailVO> orderList(String memberId) throws Exception;
 	
@@ -68,7 +66,7 @@ public interface OrderDAO {
 	 * 상세 주문조회 (관리자, 이용자)
 	 * 
 	 * @param orderId 주문 번호
-	 * @return 주문 정보
+	 * @return orderDetailVO 주문 상세 객체 정보
 	 * @throws Exception 예외처리
 	 */
 	List<OrderDetailVO> getOrderView(String orderId) throws Exception;
@@ -77,7 +75,6 @@ public interface OrderDAO {
 	 * 배송상태 처리
 	 * 
 	 * @param orderVO (아이디, 주문상태처리)
-	 * @return 배송상태
 	 * @throws Exception 예외처리
 	 */
 	public void delivery(OrderVO orderVO) throws Exception;
@@ -86,7 +83,6 @@ public interface OrderDAO {
 	 * 상품 배송 중일때 해당 구매 상품 재고 감소
 	 * 
 	 * @param productVO 상품 정보
-	 * @return 해당 구매 상품 재고
 	 * @throws Exception 예외처리
 	 */
 	public void productQuan(ProductVO productVO) throws Exception;

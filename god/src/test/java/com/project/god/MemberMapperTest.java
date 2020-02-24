@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.project.god.domain.MemberVO;
-import com.project.god.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
