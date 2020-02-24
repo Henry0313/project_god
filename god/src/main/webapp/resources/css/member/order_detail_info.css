@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h4 {
+	font-size: 14px;
+}
+
+/* 느낌표 만들기 */
+.my_border {
+    border: 1px solid black;
+    color: red;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+
+.my_border_box2 {
+    border: 1px solid black;
+    border-radius: 1px;
+    color:white;
+    padding: 0 5px;
+    margin-right: 5px;
+    background: gray;
+}
+
+#wrap {
+    padding: 70px 20px 50px;
+    /* background: cyan; */
+}
+
+#title_wrap {
+    text-align: center;
+    font-size: 20px;
+}
+/*//////////////////주문 정보 테이블 시작//////////////////////////*/
+#order_member_info table{
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+#order_member_info th {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px;
+    padding: 15px;
+    text-align: left;
+}
+
+#order_member_info td {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px 1px;
+    padding-left: 15px;
+}
+/*///////////////////주문 정보 테이블 끝/////////////////////////*/
+
+/*////////////////////결제 정보 테이블 시작////////////////////////*/
+#pay_member_info table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+#pay_member_info th {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px;
+    padding: 15px;
+    text-align: left;
+}
+
+#pay_member_info td {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px 1px;
+    padding-left: 15px;
+}
+
+/*/////////////////////결제 정보 테이블 끝///////////////////////*/
+
+/*////////////////////주문 상품 정보 테이블 끝////////////////////////*/
+/* 주문내역 타이틀 border */
+#order_list_box table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-top: 2px solid black;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#order_list_box tfoot{
+    background: #f5f5f5;
+}
+
+#order_list_box th {
+    padding: 16px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#order_list_box td {
+    padding: 16px 0;
+}
+/* 주문내역 상품 이미지 크기 */
+#order_list_box img {
+    max-width: 75px;
+}
+/*/////////////////주문 상품 정보 테이블 끝///////////////////////////*/
+
+/*///////////////////배송지정보 테이블 시작/////////////////////////*/
+#delivery_member_info table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+#delivery_member_info th {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px;
+    padding: 15px;
+    text-align: left;
+}
+
+#delivery_member_info td {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px 1px;
+    padding-left: 15px;
+}
+
+/* 주문목록 으로 가기 버튼 영역 */
+#order_detail_btn {
+    text-align: right;
+    margin: 20px;
+}
+
+/* 주문목록 으로 가기 버튼 */
+#order_detail_btn a {
+    padding: 10px;
+    color: white;
+    background: #495164;
+}
+/*////////////////////배송지정보 테이블 끝////////////////////////*/
+
+.nointerset_use_info_box {
+    border: 1px solid #e7e7e7;
+    padding: 10px;
+}
+.nointerset_use_info_box h4 {
+    margin: 10px 10px;
+}
+
+.nointerset_use_info_box p {
+    margin: 5px 10px;
+}

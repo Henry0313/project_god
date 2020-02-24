@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body {
+    font-size: 12px;
+    margin: 1px;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 느낌표 만들기 */
+.my_border {
+    border: 1px solid black;
+    color: red;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+
+.my_border_box2 {
+    border: 1px solid black;
+    border-radius: 1px;
+    color:white;
+    padding: 0 5px;
+    margin-right: 5px;
+    background: gray;
+}
+#wrap {
+    padding: 70px 20px 50px;
+    /* background: cyan; */
+}
+
+#title_wrap {
+    text-align: center;
+    font-size: 20px;
+}
+
+#order_success_title {
+    text-align: center;
+    width: 380px;
+    margin: 0 auto 50px;;
+}
+
+#order_success_title p {
+    margin: 0 0 20px 0;
+}
+#order_success_title span {
+    display: block;
+    font-size: 18px;
+}
+
+#order_number_day p {
+    margin: 0;
+}
+
+/* 주문내역 타이틀 border */
+.order_delivery_title {
+    border-bottom: 2px solid black;
+}
+
+/* //////////////////////////결제정보 wrap 시작//////////////////////////////// */
+/* 결제정보 wrap */
+#pay_info_wrap table{
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+#pay_info_wrap th {
+    border: 1px solid #e7e7e7;
+    text-align: left;
+    padding: 20px 0 20px 10px;
+}
+
+#pay_info_wrap td {
+    border: 1px solid #e7e7e7;
+    padding: 20px 0 20px 10px
+}
+
+/* ////////////////////////결제정보 wrap 끝 //////////////////////////// */
+
+/* ///////////////////////////////////주문 상품 정보 시작 /////////////////// */
+#order_list_box table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+#order_list_box tfoot{
+    background: #f5f5f5;
+}
+
+#order_list_box th {
+    padding: 16px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#order_list_box td {
+    padding: 16px 0;
+}
+/* 주문내역 상품 이미지 크기 */
+#order_list_box img {
+    max-width: 75px;
+}
+
+.prd_detail_center {
+    text-align: center;
+
+}
+
+.prd_detail_left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* ////////////////////////// 주문 상품 정보 ///////////////////////// */
+.displaynone {
+    display: none;
+}
+
+#price_info_wrap table{
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#price_info_wrap thead th {
+    border-top: 2px solid black;
+    border-bottom: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+#price_info_wrap thead td {
+    border-top: 2px solid black;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+#price_info_wrap tbody th {
+    border-bottom: 2px solid black;
+    border-right: 1px solid #e7e7e7;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#price_info_wrap tbody td {
+    border-bottom: 2px solid black;
+    text-align: center;
+    font-size: 20px;
+}
+
+#price_info_wrap a {
+    margin-left: 5px;
+    border: 1px solid #e7e7e7;
+    padding: 5px 10px;
+    font-size: 11px;
+    background: #fafafa;
+}
+/* ////////////////////////// 주문 상품 정보 끝///////////////////////// */
+
+/* //////////////////////////// 예정 적립금 시작 ///////////////////// */
+#all_mileage_price table {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#all_mileage_price th {
+    border: solid #e7e7e7;
+    border-width: 0 1px 1px 0;
+    padding: 10px;
+    text-align: left;
+}
+
+#all_mileage_price td {
+    border-bottom: 1px solid #e7e7e7;
+    padding-left: 10px;
+}
+/* ////////////////////////////////// 예정적립금 끝//////////////////// */
+
+/* ///////////////////////////////////////배송지 정보 시작/////////////////// */
+#delivery_address_info table {
+    width: 100%;
+}
+
+#delivery_address_info th {
+    border: solid #e7e7e7;
+    border-width: 0 1px 1px 0;
+    padding: 10px;
+    text-align: left;
+}
+
+#delivery_address_info td {
+    border-bottom: 1px solid #e7e7e7;
+    padding-left: 10px;
+}
+/* /////////////////////////////////////배송지 정보 끝 ////////////////////// */
+#btns {
+    margin: 20px 0;
+}
+
+#btns a {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #e7e7e7;
+}

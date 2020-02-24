@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.god.mapper.ProductMapper">
+
+	<!-- 게시글 쓰기 -->
+	<insert id="regiProduct" parameterType="ProductVO">
+		<![CDATA[
+			INSERT INTO product ( product_id,
+								  product_name,
+								  product_price1,
+								  product_price2,
+								  product_img,
+								  product_thum_img,
+								  product_list_img,
+								  product_content,
+								  product_color,
+								  product_size,
+								  product_quan,
+								  product_date,
+								  product_info,
+								  product_read_count,
+								  product_delivery_fee,
+								  cate_code )
+						 VALUES ( product_seq.NEXTVAL,
+					    		  #{productName},
+					    		  #{productPrice1},
+					    		  #{productPrice2},
+					    		  #{productImg},
+					    		  #{productThumImg},
+					    		  #{productListImg},
+					    		  #{productContent},
+					    		  #{productColor},
+					    		  #{productSize},
+					    		  #{productQuan},
+					    		  SYSDATE,
+					    		  #{productInfo},
+					    		  #{productReadCount},
+					    		  #{productDeliveryFee},
+					    		  #{cateCode} )
+		]]>
+	</insert>
+
+	<!-- 게시글 마지막 시퀀스 번호  -->
+	<select id="getProductNumByLastSeq" resultType="int">
+		SELECT product_seq.NEXTVAL 
+		  FROM dual
+	</select>
+	
+	<!-- 상품 전체 목록(페이징) -->
+	<select id="getProductList" resultType="ProductVO">
+		SELECT * FROM (
+			SELECT
+				m.*,
+				FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+	          FROM (
+		        	SELECT * 
+		        	  FROM product
+		             ORDER BY product_id DESC
+		        ) m
+		)
+		WHERE page = #{page}
+	</select>
+	
+	<!-- 상품 개별 조회 -->
+	<select id="getProduct" resultType="ProductVO">
+		SELECT * 
+		  FROM product
+		 WHERE product_id = #{productId}
+	</select>
+	
+	<!-- 상품 조회수 -->
+	<update id="increaseProductViewcnt" parameterType="int">
+		UPDATE product 
+		   SET product_read_count = product_read_count + 1
+		 WHERE product_id = #{productId}
+	</update>
+	
+	<!-- 전체 게시글 수 -->
+	<select id="getProductListCount" resultType="int">
+		SELECT COUNT(*) 
+		  FROM product
+	</select>
+	
+	<!-- 카테고리별 전체 게시글 수 -->
+	<select id="getCateProductListCount" resultType="int">
+		SELECT COUNT(*) 
+		  FROM product
+		 WHERE cate_code = #{cateCode}
+		   AND product_info != 'H'
+	</select>
+	
+	<!-- 상품 "검색" 조회 -->
+	<select id="getProductBySearch" resultType="ProductVO">
+		SELECT * FROM (
+			SELECT m.*, FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+		    FROM (
+		    	SELECT * FROM (
+		    		<if test="searchDate1=='' and searchInfo=='' and searchPrice1==''">
+		    			product
+		    		</if>
+		    		<if test="searchDate1=='' and searchInfo=='' and searchPrice1!=''">
+		    			SELECT * FROM product
+		    			WHERE product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2}
+		    		</if>
+	    			<if test="searchDate1=='' and searchInfo!='' and searchPrice1==''">
+		   				SELECT * FROM product
+		   				WHERE product_info = #{searchInfo}
+	    			</if>
+	    			<if test="searchDate1=='' and searchInfo!='' and searchPrice1!=''">
+	    				SELECT * FROM product
+	    				WHERE product_info = #{searchInfo}
+	    				AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+	    			</if>
+			    		<if test="searchDate1!='' and searchInfo=='' and searchPrice1==''">
+			    			SELECT * FROM product
+					    WHERE product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1)
+					</if>
+					<if test="searchDate1!='' and searchInfo=='' and searchPrice1!=''">
+						SELECT * FROM product
+					    WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+					    AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+					</if>
+			    		<if test="searchDate1!='' and searchInfo!='' and searchPrice1==''">
+			    			SELECT * FROM product
+			    			WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+			    			AND (product_info = #{searchInfo})
+			    		</if>
+			    		<if test="searchDate1!='' and searchInfo!='' and searchPrice1!=''">
+			    			SELECT * FROM product
+			    			WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+			    			AND (product_info = #{searchInfo})
+			    			AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+			    		</if>
+			    	)
+					WHERE product_name like '%' || #{searchWord} || '%'
+			        ORDER BY product_id DESC
+				) m
+			)
+		WHERE page = #{page}
+	</select>
+	
+	<!-- 상품 "전체 검색" 조회수 -->
+	<select id="getAllProductsBySearch" resultType="int">
+		SELECT COUNT(*) FROM (
+			SELECT m.* FROM (
+				SELECT * FROM (
+					<if test="searchDate1=='' and searchInfo=='' and searchPrice1==''">
+			    			product
+			    		</if>
+			    		<if test="searchDate1=='' and searchInfo=='' and searchPrice1!=''">
+			    			SELECT * FROM product
+			    			WHERE product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2}
+			    		</if>
+	    			<if test="searchDate1=='' and searchInfo!='' and searchPrice1==''">
+		   				SELECT * FROM product
+		   				WHERE product_info = #{searchInfo}
+	    			</if>
+	    			<if test="searchDate1=='' and searchInfo!='' and searchPrice1!=''">
+	    				SELECT * FROM product
+	    				WHERE product_info = #{searchInfo}
+	    				AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+	    			</if>
+			    		<if test="searchDate1!='' and searchInfo=='' and searchPrice1==''">
+			    			SELECT * FROM product
+					    	WHERE product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1)
+					</if>
+					<if test="searchDate1!='' and searchInfo=='' and searchPrice1!=''">
+						SELECT * FROM product
+					    	WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+					    	AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+					</if>
+			    		<if test="searchDate1!='' and searchInfo!='' and searchPrice1==''">
+			    			SELECT * FROM product
+			    			WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+			    			AND (product_info = #{searchInfo})
+			    		</if>
+			    		<if test="searchDate1!='' and searchInfo!='' and searchPrice1!=''">
+			    			SELECT * FROM product
+			    			WHERE (product_date BETWEEN TO_CHAR(#{searchDate1}) AND TO_CHAR(TO_DATE(#{searchDate2}) + 1))
+			    			AND (product_info = #{searchInfo})
+			    			AND (product_price2 BETWEEN #{searchPrice1} AND #{searchPrice2})
+			    		</if>
+				)
+				WHERE product_name like '%' || #{searchWord} || '%'
+		        ORDER BY product_id DESC
+			) m
+		)
+	</select>
+	
+	<!-- 카테고리 목록 -->
+	<select id="getCategoryList" resultType="CategoryVO">
+		SELECT cate_lev, cate_name, cate_code, cate_ref 
+		  FROM category
+		 START WITH cate_ref IS NULL CONNECT BY PRIOR cate_code = cate_ref
+	</select>
+	
+	<!-- 카테고리별 상품 리스트 -->
+	<select id="getCateProductList" resultType="ProductVO">
+		SELECT * FROM (
+                    SELECT
+                           m.*,
+                           FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+                    FROM (
+                             SELECT 
+								p.product_id, p.product_name, c.cate_code, c.cate_name,
+								p.product_price2, p.product_list_img, p.product_color 
+							  FROM product p
+									INNER JOIN category c
+											ON p.cate_code = c.cate_code
+							 WHERE c.cate_code = #{cateCode}
+							 AND p.product_info != 'H'
+							 ORDER BY product_id DESC 
+                      	 ) m
+        )
+     	WHERE page = #{page}
+	</select>
+	
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct">
+		DELETE product
+		 WHERE product_id = #{productId}
+	</delete>
+	
+	<!-- 상품 수정 -->
+	<update id="updateProduct">
+		UPDATE product 
+		   SET cate_code = #{cateCode},
+			   product_name = #{productName},
+			   product_content = #{productContent},
+			   product_price2 = #{productPrice2},
+			   product_color = #{productColor},
+			   product_size = #{productSize},
+			   product_quan = #{productQuan},
+			   product_info = #{productInfo},
+			   product_delivery_fee = #{productDeliveryFee}
+		 WHERE product_id = #{productId}
+	</update>
+	
+	<!-- 상품 진열 여부 (하단 버튼클릭시) -->
+	<!-- 진열 (D) -->
+	<update id="dUpdate">
+		UPDATE product 
+		   SET product_info = #{productInfo}
+		 WHERE product_id = #{productId}
+	</update>
+	
+	<!-- 숨김 (H) -->
+	<update id="hUpdate">
+		UPDATE product 
+		   SET product_info = #{productInfo}
+		 WHERE product_id = #{productId}
+	</update>
+
+</mapper>

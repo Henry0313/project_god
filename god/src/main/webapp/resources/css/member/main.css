@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body {
+	margin: 0;
+	font-family: Nanum Gothic;
+}
+
+ul{
+	list-style: none;
+}
+
+button {
+	overflow: visible;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+/* 임시 */
+#wrap {
+	position: relative;
+	margin: 0 auto 50px;
+}
+
+/*//////////////////////////////////////////// 배너 부분 시작 ////////////////////////////////////////////////////////*/
+#banner_wrap {
+	position: relative;
+	margin: 0 auto 50px;
+	/* background: black; */
+	max-width: 1700px;
+}
+
+#banner {
+	margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#banner_img {
+	position: relative;
+	display: flex;
+	/* background: black; */
+	box-sizing: content-box;
+}
+
+[id^=imgs_] {
+	/* background: cyan; */
+	text-align: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+    -webkit-box-align: center;
+	align-items: center;
+}
+
+#banner_img a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+
+}
+
+#banner_img a img {
+	width: 100%;
+	height: auto;
+}
+
+#bullet_banner {
+	width: 100%;
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+	text-align: center;
+	z-index: 10;
+	/* background: red; */
+}
+
+#bullet_banner span {
+
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin: 0 4px;
+	border: 0 solid;
+	border-radius: 9px;
+	font-size: 0;
+	cursor: pointer;
+	/* background: rgba(255, 255, 255, 0.5); */
+}
+
+#banner_left {
+	position: absolute;
+	font-size: 40px;
+    width: 40px;
+    text-align: center;
+	right: auto;
+	left: 50%;
+	top: 50%;
+	margin-left: -600px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+#banner_right {
+	position: absolute;
+	font-size: 40px;
+    width: 40px;
+    text-align: center;
+	left: auto;
+	right: 50%;
+	top: 50%;
+	margin-right: -600px;
+	z-index: 10;
+	cursor: pointer;
+}
+/*//////////////////////////////////////////// 배너 부분 끝 ////////////////////////////////////////////////////////*/
+
+/*//////////////////////////////////////////// 상품 정리 부분 시작 ////////////////////////////////////////////////////////*/
+/* 메인 타이틀 상품들 전체 레이아웃 */
+[id^=main_] {
+	width: 100%;
+	max-width: 1512px;
+	margin: 0 auto 100px;
+}
+
+/* 상품 top title */
+[id^=title_] {
+	margin: 0 auto 50px;
+	text-align: center;
+}
+
+/* 상품 top title*/
+[id^=title_] span {
+	position: relative;
+	display: inline-block;
+	zoom: 1;
+	font-size: 16pt;
+	letter-spacing: 2px;
+	font-weight: 400;
+	line-height: 28px;
+}
+
+/* 각 타이틀 상품정보들 전체 영역 */
+[id$=_products] {
+	display: table;
+	width: 100%;
+	padding-left: 0;
+	min-width: 756px;
+	max-width: 1534px;
+	margin: 0 auto;
+	font-size: 0;
+	line-height:0;
+}
+
+/* 각 타이틀 상품정보들 간격 및 영역 */
+[id$=_products] > li {
+	width: 25%;
+	position: relative;
+	display: inline-block;
+	margin: 0 0 50px;
+	vertical-align: top;
+}
+
+/* 각 상품 이미지 영역 */
+[id^=product_] {
+	position: relative;
+	margin: 0 15px 15px;
+	text-align: center;
+}
+
+/* 각 상품 이미지 포지션 */
+.list_img {
+	position: relative;
+}
+
+/* 각 상품 이미지 호버 처리*/
+.list_img:hover {
+	opacity: 0.8;
+}
+
+/* 각 상품 이미지 사이즈 조정 */
+.list_img a img {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* 확대보기 및 좋아요 버튼 포지션 및 영역 */
+.icon {
+	margin: 0;
+	vertical-align: middle;
+	padding: 0;
+	width: 100%;
+	border: 0;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* 확대보기 버튼 사이즈 */
+.expand_button {
+	float: left;
+	margin: 0;
+}
+
+/* 확대보기 버튼 배경 및 변화 */
+.expand_button > span {
+	background: rgba(255, 255, 255, 0.5);
+	width: 37px;
+	height: auto;
+	text-align: center;
+	display: inline-block;
+	float: left;
+	transition: all 0.4s;
+}
+
+/* 확대보기 버튼 호버 처리 버튼 올릴경우 찐하게 처리 */
+.expand_button > span:hover {
+	background: rgba(255, 255, 255, 255);
+}
+
+.option{
+	display: inline-block;
+    float: left;
+}
+
+/* 확대보기 및 좋아요 버튼 */
+.like_button {
+	float: right;
+    position: relative;
+    background: rgba(255,255,255,0.5);
+    width: 51px;
+    height: auto;
+    transition: all 0.4s;
+}
+
+/* 확대보기 및 좋아요 버튼  */
+.like_button strong {
+	position: absolute;
+    top: 0;
+    right: 9px;
+    line-height: 34px;
+}
+
+/* 상품 정보들 */
+.description_product {
+	margin: 0 auto;
+	padding: 0 15px;
+	line-height: 18px;
+	text-align: center;
+	position: relative;
+
+}
+
+/* 상품명 영역 */
+.name_description {
+	display:block;
+	font-weight: normal;
+	padding-bottom: 0px;
+	letter-spacing: 0px;
+}
+
+/* 상품명 */
+.title_description {
+	margin: 0 0 17px;
+}
+
+/* 상품 컬러 및 가격 세일 영역 */
+.info_product {
+	margin: 0;
+	padding: 0;
+}
+
+/* 상품 컬러 및 가격 세일 간격 */
+.info_product > li {
+	text-align: center;
+	padding: 2px 0;
+	letter-spacing: 1px;
+}
+
+/* 상품 컬러 및 가격 세일 */
+.info_product > li > strong {
+	font-weight: normal;
+	vertical-align: top;
+}
+
+/* 상품 컬러 색깔 사이즈 */
+.color_product {
+	max-width: 190px;
+	overflow: hidden;
+	display: inline-block;
+	margin: 0;
+	padding 4px 0;
+}
+
+/* 상품 컬러 색깔 처리 */
+.chips {
+	float: left;
+	width: 8px;
+	height: 8px;
+	margin: 0 0 0 2px;
+	border: 1px solid #dedede;
+	border-radius: 100%;
+	font-size: 0;
+	line-height: 0;
+}
+/*//////////////////////////////////////////// 상품 정리 부분 끝 ////////////////////////////////////////////////////////*/

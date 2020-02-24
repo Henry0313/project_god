@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.god.mapper.QnaProductMapper">
+	
+	<!-- 게시글 쓰기 -->
+	<insert id="writeQnaProduct" parameterType="QnaProductVO">
+		<![CDATA[
+			INSERT INTO qna_product
+				 VALUES ( #{qnaProductId},
+				    	  #{memberId},
+				    	  #{qnaProductPw},
+				    	  #{qnaProductTitle},
+				    	  'test',
+				    	  #{qnaProductReRef},
+				    	  #{qnaProductReLev},
+				    	  #{qnaProductReSeq},
+				    	  #{qnaProductReadCount},
+				    	  SYSDATE,
+				    	  #{qnaProductContent} )
+		]]>
+	</insert>
+
+	<!-- 게시글 마지막 시퀀스 번호  -->
+	<select id="getQnaProductIdByLastSeq" resultType="int">
+		SELECT qna_product_seq.NEXTVAL 
+		  FROM dual
+	</select>
+
+	<!-- 게시글 목록(페이징) -->
+	<select id="getArticleQnaProductList" resultType="QnaProductVO">
+		SELECT * FROM (
+                    SELECT
+                           m.*,
+                           FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+                    FROM (
+                             SELECT * FROM qna_product
+                             ORDER BY qna_product_re_ref DESC , qna_product_re_seq ASC
+                      	 ) m
+        )
+     	WHERE page = #{page}
+	</select>
+
+	<!-- 전체 게시글 수 -->
+	<select id="getQnaProductListCount" resultType="int">
+		SELECT COUNT(*) 
+		  FROM qna_product
+	</select>
+
+	<!-- 게시글 조회 -->
+	<select id="getQnaProduct" parameterType="int" resultType="QnaProductVO">
+		SELECT * 
+		  FROM qna_product
+	 	 WHERE qna_product_id = #{qnaProductId}
+	</select>
+	
+	<!-- 게시글 비밀번호 확인 -->
+	<select id="getQnaProductByIdAndPw" resultType="QnaProductVO">
+		SELECT * 
+		  FROM qna_product
+		 WHERE qna_product_id = #{qnaProductId}
+		   AND qna_product_pw = #{qnaProductPw}
+	</select>
+
+	<!-- 게시글 조회수 수정(업데이트) -->
+	<update id="increaseQnaProductViewcnt" parameterType="int">
+		UPDATE qna_product SET qna_product_readcount = qna_product_readcount + 1
+		WHERE qna_product_id = #{qnaProductId}
+	</update>
+
+	<!-- 게시글 조회수 수정(업데이트) -->
+	<update id="updateReadCount" parameterType="int">
+		UPDATE qna_product 
+		   SET qna_product_readcount = qna_product_readcount + 1
+		 WHERE qna_product_id = #{qnaProductId}
+	</update>
+
+	<!-- 게시글 수정 -->
+	<update id="updateQnaProduct" parameterType="QnaProductVO">
+		UPDATE qna_product 
+		   SET qna_product_title = #{qnaProductTitle},
+			   qna_product_content = #{qnaProductContent},
+			   qna_product_date = SYSDATE
+		 WHERE qna_product_id = #{qnaProductId}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="deleteQnaProduct" parameterType="int">
+		DELETE 
+		  FROM qna_product
+		 WHERE qna_product_id = #{qnaProductId}
+	</delete>
+
+	<!-- 게시글 "검색" 조회 -->
+	<select id="getQnaProductBySearch" resultType="QnaProductVO">
+		SELECT * FROM (
+                    SELECT
+                           m.*,
+                           FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+                    FROM (
+                             SELECT * FROM (
+                             	<if test="searchDate=='전체'">
+                             	qna_product
+                             	</if>
+                             	<if test="searchDate=='일주일'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-7) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='한달'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-30) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='세달'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-90) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             )
+							<if test="searchKind=='제목'">
+							WHERE qna_product_title like '%' || #{searchWord} || '%'
+							</if>
+							<if test="searchKind=='내용'">
+							WHERE qna_product_content like '%' || #{searchWord} || '%'
+							</if>
+                            <if test="searchKind=='아이디'">
+                            WHERE member_id like '%' || #{searchWord} || '%'
+                            </if>
+                            ORDER BY qna_product_id DESC
+                      	 ) m
+        )
+     	WHERE page = #{page}
+	</select>
+	
+	<!-- 게시글 "전체 검색" 조회수 -->
+	<select id="getAllQnaProductsBySearch" resultType="int">
+		SELECT COUNT(*) FROM (
+                    SELECT
+                           m.*
+                           
+                    FROM (
+                             SELECT * FROM (
+                             	<if test="searchDate=='전체'">
+                             	qna_product
+                             	</if>
+                             	<if test="searchDate=='일주일'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-7) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='한달'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-30) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='세달'">
+                             	SELECT * FROM qna_product
+                             		WHERE qna_product_date BETWEEN TO_CHAR(SYSDATE-90) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             )
+							<if test="searchKind=='제목'">
+							WHERE qna_product_title like '%' || #{searchWord} || '%'
+							</if>
+							<if test="searchKind=='내용'">
+							WHERE qna_product_content like '%' || #{searchWord} || '%'
+							</if>
+                            <if test="searchKind=='아이디'">
+                            WHERE member_id like '%' || #{searchWord} || '%'
+                            </if>
+							
+                            ORDER BY qna_product_id DESC
+                      	 ) m
+        )
+	</select>
+	
+	<!-- 답글 쓰기 -->
+	<insert id="replyWriteQnaProduct" parameterType="QnaProductVO">
+		<![CDATA[
+			INSERT INTO qna_product
+				 VALUES ( qna_product_seq.NEXTVAL,
+						  #{memberId},
+						  #{qnaProductPw},
+						  #{qnaProductTitle},
+						  '',
+						  #{qnaProductReRef},
+						  #{qnaProductReLev},
+						  #{qnaProductReSeq},
+						  #{qnaProductReadCount},
+						  SYSDATE,
+						  #{qnaProductContent} )
+		]]>
+	</insert>
+	
+	<!-- 답변 게시글 원글 및 게시글 순서 수정  -->
+	<update id="updateQnaProductByRefAndSeq">
+		UPDATE qna_product 
+		   SET qna_product_re_seq = qna_product_re_seq + 1
+		 WHERE qna_product_re_ref = #{qnaProductReRef}
+		   AND qna_product_re_seq > #{qnaProductReSeq}
+	</update>
+	
+	<!-- 답글 게시글 수 -->
+	<select id="getCountReplys" resultType="int">
+		SELECT COUNT(*) 
+		  FROM qna_product
+		 WHERE qna_product_re_ref = #{qnaProductId} AND qna_product_re_lev = 1
+	</select>
+	
+	<!-- 이전글 -->
+	<select id="getPre" resultType="int">
+		<![CDATA[
+			SELECT (SELECT NVL(MAX(qna_product_id),#{qnaProductId}) 
+					  FROM qna_product 
+					 WHERE qna_product_id < #{qnaProductId} AND qna_product_re_lev = 0) AS "preId" 
+			  FROM dual
+		]]>
+	</select>
+	
+	<!-- 다음글 -->
+	<select id="getNext" resultType="int">
+		<![CDATA[
+			SELECT (SELECT NVL(MIN(qna_product_id),#{qnaProductId}) 
+					  FROM qna_product 
+					 WHERE qna_product_id > #{qnaProductId} AND qna_product_re_lev = 0) AS "nextId"
+			  FROM dual
+		]]>
+	</select>
+	
+</mapper>

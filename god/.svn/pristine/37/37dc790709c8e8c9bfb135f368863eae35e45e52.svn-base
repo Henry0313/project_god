@@ -1,0 +1,500 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+/* 전체 레이아웃 */
+div#wrap {
+	display: flex;
+	width: 1330px;
+	/* 템플릿 적용시 전체 레이아웃 높이 조정 : 본문 가용화면 확보 :
+		가용화면(viewport) - 상단메뉴 높이 - 하단 section 높이 - padding(높이)  */
+	min-height: calc(100vh - 50px - 70px - 40px);
+	margin: 0 auto;
+/*	background: pink; */
+    font-family: Nanum Gothic;
+	align-items: center;
+	justify-content: center; 
+}
+
+/* a 태그 데코레이션 제거 */
+a, a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+div#section_wrap {
+	/* width: 1500px; */
+	min-width: 750px;
+	height: auto;
+/* 	background: black; */
+}
+
+/* section1 전체 wrap */
+div#section1 {
+	display: flex;
+	/* width: 1500px; */
+	height: 450px;
+/* 	background: cyan; */
+	align-items: center;
+	justify-content: center;
+}
+
+/* 자주이용메뉴 전체 */
+#section1_left_wrap {
+	width: 460px;
+	height: 360px;
+	border: 2px solid;
+/* 	background: green; */ 
+}
+
+/* 자주이용메뉴 시작 */
+#section1_left {
+	float: left;
+	width: 400px;
+	height: 240px;
+	margin: 30px;
+/* 	background: red; */
+}
+
+/* 자주이용메뉴, TODAY 현황 title */
+#section1_left_top1, #section1_center_top1 {
+	float: left;
+	width: 400px;
+	height: 40px;
+ 	/* background: #D9D9D9; */
+ 	background: rgb(58,63,76); 
+	/* border: 2px solid; */
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+/* 자주이용메뉴 로그인아이디 사이 공백  */
+#section1_left_top2 {
+	float: left;
+	width: 400px;
+	height: 20px;
+/* 	background: #AAAEEB; */
+}
+
+/* 로그인 아이디 */
+#section1_left_top3 {
+	float: left;
+	width: 400px;
+	height: 30px;
+/* 	background: red; */
+	font-size: 15px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+/* today 필드 설정 */
+.today_date {
+	width: 120px; 
+	margin: 0;
+	padding: 0; 
+	border: none; 
+	background: rgb(58,63,76);
+	letter-spacing: 1px; 
+	font-weight:bold;
+	text-align:center;  
+	color: white;
+}
+
+/* TODAY현황 아래 공백 */
+#section1_center_top2 {
+	float: left; 
+	width: 400px; 
+	height: 35px;
+}
+
+/* 자주이용메뉴 클릭버튼(정책관리, 통계, 상품관리) */
+#section1_left_middle {
+	float: left;
+	width: 400px;
+	height: 90px;
+/* 	background: #98E0AD; */
+}
+
+/* 정책관리 */
+#section1_left_middle1 {
+	float: left;
+	width: 33%;
+	height: 90px;
+/* 	background: #FFFCCC; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+/* 자주이용메뉴 버튼 */
+.rounded-circle.border-secondary {
+	width: 75px;
+	height: 75px;
+	margin: 0;
+	padding: 0;
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+.often_btn {
+	width:80px;
+	height:80px;
+	margin:0;
+	padding:0;
+	border: 1px solid rgb(58,63,76);
+	border-radius:100%;
+	background: rgb(58,63,76);
+	color: white;
+	font-size:12px;
+	text-align:center;
+}
+
+.often_btn:hover {
+	background: rgb(49,54,65);
+	color: #ff0;
+	font-weight: 600;
+}
+
+/* 통계 */
+#section1_left_middle2 {
+	float: left;
+	width: 34%;
+	height: 90px;
+/* 	background: white; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 상품관리 */
+#section1_left_middle3 {
+	float: left;
+	width: 33%;
+	height: 90px;
+/* 	background: #FFFCCC; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 만료일 wrap */
+#section1_left_bottom {
+	float: left;
+	width: 400px;
+	height: 130px;
+/* 	background: #60C5F1; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 만료일 날짜  */
+#section1_left_bottom1, #section1_left_bottom3 {
+	float: left;
+	width: 140px;
+	height: 90px;
+	border: 2px solid;
+	border-right: none;
+	font-size:14px;
+/* 	background: yellow; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 만료일 설정 버튼 */
+#section1_left_bottom2, #section1_left_bottom4 {
+	float: left;
+	width: 50px;
+	height: 90px;
+	border: 2px solid;
+	border-left: none;
+/*	background: pink; */
+	display: flex;
+	padding-top:50px;
+	justify-content: center;
+}
+
+/* 만료일 설정 버튼 이미지 */
+input.set_btn {
+	width: 25px;
+	height: 25px;
+	margin-bottom: 10px;	
+	background: url( "../../css/admin/images/brightness7.png" ) no-repeat center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* TODAY현황 전체 wrap */
+#section1_center_wrap {
+	width: 460px;
+	height: 360px;
+	border: 2px solid;
+/* 	background: #FBCFD0; */ 
+}
+
+/* TODAY현황 시작 */
+#section1_center {
+	float: left;
+	width: 400px;
+	height: 300px;
+	margin: 30px;
+/* 	background: #DAAADB; */
+}
+
+/* 현황 box wrap */
+#section1_box {
+	float: left; 
+	width: 120px; 
+	height: 90px;
+	font-size:12px; 
+/* 	background: green; */
+}
+
+/* 현황 box title */
+#section1_box_title {
+	float: left; 
+	width: 120px; 
+	height: 20px; 
+	border: 2px solid black;
+	border-bottom: none;
+	background: rgb(58,63,76);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+/* 현황 box content */
+#section1_box_content {
+	float: left; 
+	width: 120px; 
+	height: 70px; 
+	border: 2px solid;
+/* 	background: green; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 미처리현황 전체 wrap */
+#section1_right_wrap {
+	width: 360px;
+	height: 360px;
+	border: 2px solid;
+/* 	background: #FFB27D; */ 
+}
+
+/* 미처리현황 시작 */
+#section1_right {
+	float: left;
+	width: 300px;
+	height: 300px;
+	margin: 30px;
+/* 	background: cyan; */
+}
+
+/* 미처리현황 title */
+#section1_right_top1 {
+	float: left;
+	width: 300px;
+	height: 40px;
+	/* border: 2px solid; */
+ 	background: rgb(58,63,76);
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+/* 미처리현황 title 아래 box 사이 공백 */
+#section1_right_top2 {
+	float: left; 
+	width: 300px; 
+	height: 35px;
+/* 	background:yellow; */
+}
+
+/* 사내공지사항, 개선사항 전체 wrap */
+div#section2 {
+	display: flex;
+	/* width: 1330px; */
+	height: 350px;
+/* 	background: yellow; */
+	align-items: center;
+	justify-content: center
+}
+
+/* section2_wrap 전체 */
+#section2_wrap {
+	width: 1330px;
+	height: 280px;
+/*  background: #C8EFD4; */ 
+}
+
+/* 사내공지항 전체 wrap */
+#section2_left_wrap {
+	float: left;
+	width: 550px;
+	height: 280px;
+	border: 2px solid;
+/* 	background: #F8A1A4; */ 
+}
+
+/* 사내 공지사항 title wrap */
+#section2_left_top_wrap {
+	width: 550px;
+	height: 50px;
+/* 	background: #92D050; */
+}
+
+/* 사내 공지사항 title */
+#section2_left_top1 {
+	float: left;
+	width: 350px;
+	height: 50px;
+	padding-left:20px;
+/* 	background: #B84A5B; */
+	display: flex;
+	align-items: center;
+}
+
+/* 사내 공지사항 더보기 버튼 */
+#section2_left_top2 {
+	float: left;
+	width: 200px;
+	height: 50px;
+/* 	background: #94D8F6; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left:100px;
+}
+
+/* 사내 공지사항 아래 최신글 5개 */
+#section2_left_bottom_wrap {
+	width: 550px;
+	height: 230px;
+	font-size: 12px;
+/* 	background: #DAAADB; */
+}
+
+/* 사내 웹 사이트 개선 사항 전체 wrap */
+#section2_right_wrap {
+	float: right;
+	width: 550px;
+	height: 280px;
+	border: 2px solid;
+/* 	background: #94D8F6; */
+}
+
+/* 적립금 팝업창 주변 어둡게*/
+#modal {
+	display: none;
+	display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    text-align:center;
+}
+
+/* 적립금 팝업창 : 팝업 */
+#modal_ {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 240px;
+	padding: 1rem 1.5rem;
+	border-radius: 0.5rem;
+	transform: translate(-50%, -50%);
+	background-color: white;
+}
+
+/* 적립금 팝업창 : 제목 */
+#modal_header {
+	float: left;
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px solid rgb(141,141,141);
+	text-align: left;
+/* 	background:pink; */
+}
+
+/* 적립금 팝업창 : 내용 */
+#modal_content {
+	float:left;
+	width:100%;
+	height:120px;
+	padding: 20px 0; 
+	border-radius:0px;
+	overflow: hidden;
+	text-align: left;
+/* 	background:yellow; */
+}
+
+/* 적립금 팝업창 : 하단부 */
+#modal_footer {
+	width:100%;
+	padding-top:20px;
+}

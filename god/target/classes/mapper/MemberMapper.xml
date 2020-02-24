@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Member">
+
+	<!-- 회원가입 -->
+	<insert id="insertMember" parameterType="com.project.god.domain.MemberVO">
+		INSERT INTO member
+			 VALUES ( #{memberId},
+					  #{memberPw},
+					  #{memberName},
+					  #{memberPhone},
+					  #{memberCellphone},
+					  #{memberBirth},
+					  #{memberEmail},
+					  #{memberZip},
+					  #{memberAddr},
+					  #{memberAddrDetail},
+					  #{memberClass},
+					  #{memberUseYn},
+					  sysdate,
+					  #{enabled},
+					  #{smsCheck},
+					  #{emailCheck},
+					  #{foreverCheck} )
+	</insert>
+	
+	<!-- 회원가입 ROLE -->
+	<insert id="insertRole" parameterType="com.project.god.domain.RoleVO">
+		INSERT INTO member_roles
+			 VALUES ( member_roles_seq.NEXTVAL,
+					  #{memberId},
+					  #{role} )
+	</insert>
+	
+	<!-- 전체 회원 조회 -->
+	<select id="getAllMembers" resultType="com.project.god.domain.MemberVO">
+		SELECT *
+		  FROM member
+	</select>
+	
+	<!-- 개별 회원 조회 -->
+	<select id="getMember" parameterType="String" resultType="com.project.god.domain.MemberVO">
+		SELECT *
+		  FROM member
+		 WHERE member_id=#{memberId}	
+	</select>
+	
+	<!-- 개별 회원정보 수정(갱신) (update) -->
+	<update id="updateMember" parameterType="com.project.god.domain.MemberVO">
+		UPDATE member 
+		   SET member_pw=#{memberPw},
+			   member_email=#{memberEmail},
+			   member_phone=#{memberPhone},
+		   	   member_cellphone=#{memberCellphone},
+			   member_zip=#{memberZip},
+			   member_addr=#{memberAddr},
+			   member_addr_detail=#{memberAddrDetail},
+			   sms_check=#{smsCheck},
+			   email_check=#{emailCheck},
+			   forever_check=#{foreverCheck}
+		 WHERE member_id=#{memberId}
+	</update>
+	
+	<!-- 개별 회원정보 삭제 (delete) -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE
+		  FROM member
+		 WHERE member_id=#{memberId}
+	</delete>
+	
+	<!-- 개별 롤회원정보 삭제(delete_role) -->
+	<delete id="deleteMember_role" parameterType="String">
+		DELETE
+		  FROM member_roles
+		 WHERE member_id=#{memberId}
+	</delete>
+		 
+	<!-- 주어진 회원 아이디의 회원정보가 있는지 점검 -->
+	<select id="isMember" parameterType="String" resultType="int">
+		SELECT count(*)
+		  FROM member
+		 WHERE member_id=#{memberId}
+	</select>
+	
+	<!-- 이메일을 타 회원들과 중복하지 않고 사용가능한지 여부 점검 -->
+	<select id="isEnableEmailByEmail" parameterType="String" resultType="int">
+		SELECT count(*)
+		  FROM member
+		 WHERE member_email=#{memberEmail}
+	</select>
+	
+	<!-- 핸드폰번호를 타 회원들과 중복하지 않고 사용가능한지 여부 점검 -->
+	<select id="isEnableCellphone" parameterType="String" resultType="int">
+		SELECT count(*)
+		  FROM member
+		 WHERE member_cellphone=#{memberCellphone}
+	</select>
+	
+	<!-- 주어진 회원 아이디의 이메일을 타 회원들과 중복하지 않고 사용가능한지 여부 점검 -->
+	<select id="isEnableEmailByIdAndEmail" parameterType="com.project.god.domain.MemberVO" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			  FROM (SELECT member_email
+				      FROM member
+				     WHERE member_id != #{memberId})
+			 WHERE member_email = #{memberEmail}
+		 ]]>
+	</select>
+	
+	<!-- 주어진 회원 아이디의 핸드폰을 타 회원들과 중복하지 않고 사용가능한지 여부 점검 -->
+	<select id="isEnableCellphoneByIdAndCellphone" parameterType="com.project.god.domain.MemberVO" resultType="int">
+		SELECT count(*)
+		  FROM (SELECT member_cellphone
+			      FROM member
+			     WHERE member_id != #{memberId})
+		 WHERE member_cellphone = #{memberCellphone}
+	</select>
+	
+	<!-- 주어진 회원 이름과 이메일로 아이디 조회 -->
+	<select id="getMemberIdByInfo" parameterType="com.project.god.domain.SearchMemberVO" resultType="com.project.god.domain.MemberVO">
+		SELECT member_id, member_name, member_email, member_cellphone, member_join_date
+		  FROM member
+		 WHERE member_name = #{memberName}
+		<if test="searchField == 'memberEmail'">
+		   AND member_email = #{searchValue}
+		</if>
+		<if test="searchField == 'memberCellphone'">
+		   AND member_cellphone = #{searchValue}
+		</if>
+	</select>
+	
+	<!-- 주어진 회원 이름과 이메일로 아이디 조회 -->
+	<select id="getMemberPwByInfo" parameterType="com.project.god.domain.SearchMemberVO" resultType="com.project.god.domain.MemberVO">
+		SELECT member_id
+		  FROM member
+		 WHERE member_id = #{memberId}
+		   AND member_name = #{memberName}
+		<if test="searchField == 'memberEmail'">
+		   AND member_email = #{searchValue}
+		</if>
+		<if test="searchField == 'memberCellphone'">
+		   AND member_cellphone = #{searchValue}
+		</if>
+	</select>	
+	
+	<update id="pwUpdate" parameterType="com.project.god.domain.MemberVO">
+		UPDATE member 
+		   SET member_pw = #{memberPw}
+		 WHERE member_id = #{memberId}
+	</update>
+
+</mapper>

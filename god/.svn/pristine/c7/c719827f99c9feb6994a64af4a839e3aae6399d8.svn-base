@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+
+	<Properties>
+		<Property name="LOG_DIR">./log</Property>
+	</Properties>
+ 
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+			<ThresholdFilter level="DEBUG"/>
+		</Console>
+ 
+		<RollingFile name="RollingFile" filename="${LOG_DIR}/Project.log"
+			filepattern="${LOG_DIR}/Product-%d{YYYYMMddHHmmss}.log">
+			<PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+ 
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="EventLogger" level="INFO" additivity="false">
+			<AppenderRef ref="RollingFile"/>
+		</Logger>
+		<Logger name="com.project.god" level="INFO" />
+		<Logger name="org.springframework.core" level="INFO" />	
+		<Logger name="org.springframework.beans" level="INFO" />
+		<Logger name="org.springframework.context" level="INFO" />
+		<Logger name="org.springframework.web" level="INFO" />
+	</Loggers>
+	
+	<Root level="DEBUG">
+		<AppenderRef ref="Console" />
+		<AppenderRef ref="RollingFile" />
+	</Root>
+	
+</Configuration>

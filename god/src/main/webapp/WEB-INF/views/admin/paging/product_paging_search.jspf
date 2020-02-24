@@ -1,0 +1,63 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <div>
+	rootPath : ${rootPath} <br>
+	pageVO.page : ${pageVO.page} <br>
+	pageVO.startPage : ${pageVO.startPage} <br>
+	pageVO.endPage : ${pageVO.endPage} <br>
+	pageVO.maxPage : ${pageVO.maxPage}	
+	
+</div> --%>
+<div id="pageList" class="row">
+			
+	<!-- 페이징(paging) : 검색 -->
+	<ul class="pagination">
+
+		<c:choose>
+			<c:when test="${pageVO.page <= 1}">
+				<!-- 주의) 이 부분에서 bootstrap 페이징 적용시 불가피하게 <a> 기입. <a>없으면 적용 안됨. -->
+				<li>
+					<a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=1">이전</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li>
+					<a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=${pageVO.page - 1}">이전</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+
+		<c:forEach var="a" begin="${pageVO.startPage}"
+			end="${pageVO.endPage}">
+
+			<c:choose>
+				<c:when test="${a == pageVO.page}">
+					<!-- 주의) 이 부분에서 bootstrap 페이징 적용시 불가피하게 <a> 기입. <a>없으면 적용 안됨. -->
+					<li>
+						<strong><a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=${a}">${a}</a></strong>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li>
+						<a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=${a}">${a}</a>
+					</li>
+				</c:otherwise>
+			</c:choose>
+
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${pageVO.page >= pageVO.maxPage}">
+				<li>
+					<a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=${pageVO.page}">다음</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li>
+					<a href="${rootPath}/admin/productListbySearch.do?search_word=${search_word}&search_date1=${search_date1}&search_date2=${search_date2}&search_info=${search_info}&search_price1=${search_price1}&search_price2=${search_price2}&page=${pageVO.page + 1}">다음</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+
+	</ul>
+
+</div>

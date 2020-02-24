@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.god.mapper.FaqMapper">
+	
+	<!-- 게시글 쓰기 -->
+	<insert id="writeFaq" parameterType="FaqVO">
+		INSERT INTO faq
+			 VALUES ( #{faqId},
+					  #{memberId},
+			    	  #{faqTitle},
+			    	  #{faqReadCount},
+			    	  SYSDATE,
+			    	  #{faqContent} )
+	</insert>
+
+	<!-- 게시글 마지막 시퀀스 번호  -->
+	<select id="getFaqNumByLastSeq" resultType="int">
+		SELECT faq_seq.NEXTVAL 
+		  FROM dual
+	</select>
+
+	<!-- 게시글 목록(페이징) -->
+	<select id="getArticleFaqList" resultType="FaqVO">
+		SELECT * FROM (
+                    SELECT
+                           m.*,
+                           FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+                    FROM (
+                             SELECT * FROM faq
+                             ORDER BY faq_id DESC
+                      	 ) m
+        )
+     	WHERE page = #{page}
+	</select>
+
+	<!-- 전체 게시글 수 -->
+	<select id="getFaqListCount" resultType="int">
+		SELECT COUNT(*) 
+		  FROM faq
+	</select>
+
+	<!-- 게시글 조회 -->
+	<select id="getFaq" resultType="FaqVO">
+		SELECT * 
+		  FROM faq
+		 WHERE faq_id = #{faq_id}
+	</select>
+
+	<!-- 게시글 조회수 수정(업데이트) -->
+	<update id="increaseFaqViewcnt" parameterType="int">
+		UPDATE faq 
+		   SET faq_readcount = faq_readcount + 1
+		 WHERE faq_id = #{faq_id}
+	</update>
+
+	<!-- 게시글 수정 -->
+	<update id="updateFaq">
+		UPDATE faq 
+		   SET faq_title = #{faqTitle},
+			   faq_content = #{faqContent}
+		 WHERE faq_id = #{faqId}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="deleteFaq">
+		DELETE FROM faq
+		WHERE faq_id = #{faqId}
+	</delete>
+
+	<!-- 게시글 "검색" 조회 -->
+	<select id="getFaqBySearch" resultType="FaqVO">
+		SELECT * FROM (
+                    SELECT
+                           m.*,
+                           FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+                    FROM (
+                             SELECT * FROM (
+                             	<if test="searchDate=='전체'">
+                             	faq
+                             	</if>
+                             	<if test="searchDate=='일주일'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-7) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='한달'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-30) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='세달'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-90) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             )
+							<if test="searchKind=='제목'">
+							WHERE faq_title like '%' || #{searchWord} || '%'
+							</if>
+							<if test="searchKind=='내용'">
+							WHERE faq_content like '%' || #{searchWord} || '%'
+							</if>
+                            <if test="searchKind=='아이디'">
+                            WHERE member_id like '%' || #{searchWord} || '%'
+                            </if>
+                            ORDER BY faq_id DESC
+                      	 ) m
+        )
+     	WHERE page = #{page}
+	</select>
+	
+	<!-- 검색 결과 게시물 수 -->
+	<select id="getAllFaqsBySearch" resultType="int">
+		SELECT COUNT(*) FROM (
+                    SELECT
+                           m.*
+                           
+                    FROM (
+                             SELECT * FROM (
+                             	<if test="searchDate=='전체'">
+                             	faq
+                             	</if>
+                             	<if test="searchDate=='일주일'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-7) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='한달'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-30) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             	<if test="searchDate=='세달'">
+                             	SELECT * FROM faq
+                             		WHERE faq_date BETWEEN TO_CHAR(SYSDATE-90) AND TO_CHAR(SYSDATE+1)
+                             	</if>
+                             )
+							
+							<if test="searchKind=='제목'">
+							WHERE faq_title like '%' || #{searchWord} || '%'
+							</if>
+							<if test="searchKind=='내용'">
+							WHERE faq_content like '%' || #{searchWord} || '%'
+							</if>
+                            <if test="searchKind=='아이디'">
+                            WHERE member_id like '%' || #{searchWord} || '%'
+                            </if>
+							
+                            ORDER BY faq_id DESC
+                      	 ) m
+        )
+	</select>
+	
+	<!-- 이전글 -->
+	<select id="getPre" resultType="int">
+	<![CDATA[
+		SELECT (SELECT NVL(MAX(faq_id),#{faqId}) FROM faq WHERE faq_id < #{faqId}) AS "preId"
+		FROM dual
+	]]>
+	</select>
+	
+	<!-- 다음글 -->
+	<select id="getNext" resultType="int">
+	<![CDATA[
+		SELECT (SELECT NVL(MIN(faq_id),#{faqId}) FROM faq WHERE faq_id > #{faqId}) AS "nextId"
+		FROM dual
+	]]>
+	</select>
+	
+</mapper>

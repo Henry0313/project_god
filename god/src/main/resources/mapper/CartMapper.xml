@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.god.mapper.CartMapper">
+
+	<!-- 카트 리스트 (session 이용) -->
+	<select id="cartList" resultType="CartListVO">
+		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_id DESC) AS cartListNum,
+			   c.cart_id, c.member_id, c.product_id, c.cart_quan, c.cart_date, c.cart_color, c.cart_size,
+			   p.product_name, p.product_price2, p.product_thum_img, p.product_delivery_fee
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE c.member_id = #{memberId}
+	</select>
+	
+	<!-- 카트 리스트 -->
+	<select id="cartList3" resultType="CartListVO">
+		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_id DESC) AS cartListNum,
+			   c.cart_id, c.member_id, c.product_id, c.cart_quan, c.cart_date, c.cart_color, c.cart_size,
+			   p.product_name, p.product_price2, p.product_thum_img, p.product_delivery_fee
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE c.cart_id = #{cartId}
+	</select>
+	
+	<!-- 최근 cart_id 가져오기 -->
+	<select id="getCurrCartId" resultType="int">
+		SELECT MAX(cart_id) 
+		  FROM cart
+	</select>
+	
+	<!-- 해당 cart_id 가져오기 -->
+	<select id="getThisCartId" resultType="int" parameterType="CartVO">
+		SELECT cart_id
+		  FROM cart
+		 WHERE member_id = #{memberId}
+		   AND product_id = #{productId}
+		   AND TO_DATE(cart_date, 'YY-MM-dd','NLS_DATE_LANGUAGE = American') = 
+			   TO_DATE(#{cartDate}, 'YY-MM-dd','NLS_DATE_LANGUAGE = American')
+		   AND cart_color = #{cartColor}
+		   AND cart_size = #{cartSize}
+	</select>   
+   
+	<!-- 카트담기 -->
+	<insert id="addCart">
+		INSERT INTO cart ( cart_id, 
+						   member_id, 
+						   product_id, 
+						   cart_quan, 
+						   cart_color, 
+						   cart_size)
+				  VALUES ( cart_seq.NEXTVAL, 
+				  		   #{memberId}, 
+				  		   #{productId}, 
+				  		   #{cartQuan}, 
+				  		   #{cartColor}, 
+				  		   #{cartSize} )
+	</insert>
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart" parameterType="int">
+		DELETE cart
+		 WHERE cart_id = #{cartId}
+	</delete>
+	
+	<!-- 카트 비우기 -->
+	<delete id="deleteAllCart">
+		DELETE cart
+		 WHERE member_id = #{memberId}
+	</delete>
+	
+	<!-- 카트 수정 -->
+	<update id="updateCart" parameterType="CartVO">
+		UPDATE cart
+		   SET cart_quan = #{cartQuan}
+		 WHERE cart_id = #{cartId}
+	</update>
+	
+	<!-- 카트 금액 합계 -->
+	<select id="cartSumPrice" resultType="int">
+		SELECT SUM(p.product_price2 * c.cart_quan)
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE member_id = #{memberId}
+	</select>
+	
+	<!-- 카트 금액 합계 (단일 상품) -->
+	<select id="oneCartSumPrice" resultType="int">
+		SELECT SUM(p.product_price2 * c.cart_quan)
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE cart_id = #{cartId}
+	</select>
+
+	<!-- 개별 카트 조회 -->
+	<select id="getCart" parameterType="CartVO" resultType="CartListVO">
+		SELECT *
+		  FROM cart
+		 WHERE product_id = #{productId}
+		   AND cart_color = #{cartColor}
+		   AND cart_size = #{cartSize}
+		   AND member_id = #{memberId}
+		   AND TO_DATE(cart_date, 'YY-MM-dd','NLS_DATE_LANGUAGE = American') = 
+		       TO_DATE(#{cartDate}, 'YY-MM-dd','NLS_DATE_LANGUAGE = American')
+   		 ORDER BY cart_id DESC
+	</select>
+	
+	<!-- 개별 카트 조회(개선판) -->
+	<select id="getCart2" parameterType="CartVO" resultType="CartListVO">
+		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_id DESC) AS cartListNum,
+			   c.cart_id, c.member_id, c.product_id, c.cart_quan, c.cart_date, c.cart_color, c.cart_size,
+			   p.product_name, p.product_price2, p.product_thum_img, p.product_delivery_fee
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE c.member_id = #{memberId}
+		   AND c.product_id = #{productId}
+		   AND c.cart_color = #{cartColor}
+		   AND c.cart_size = #{cartSize}
+		   AND TO_DATE(cart_date, 'YY-MM-dd','NLS_DATE_LANGUAGE = American') = 
+			   TO_DATE(#{cartDate}, 'YY-MM-dd','NLS_DATE_LANGUAGE = American')
+		 ORDER BY c.cart_id DESC
+	</select>
+	
+	<!-- 개별 카트 조회(카트 아이디)  -->
+	<select id="getCartByCartId" parameterType="int" resultType="CartListVO">
+		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_id DESC) AS cartListNum,
+			   c.cart_id, c.member_id, c.product_id, c.cart_quan, c.cart_date, c.cart_color, c.cart_size,
+			   p.product_name, p.product_price2, p.product_thum_img, p.product_delivery_fee
+		  FROM cart c
+				INNER JOIN product p
+				   ON c.product_id = p.product_id
+		 WHERE c.cart_id = #{cartId}
+		 ORDER BY c.cart_id DESC
+	</select>
+
+</mapper>

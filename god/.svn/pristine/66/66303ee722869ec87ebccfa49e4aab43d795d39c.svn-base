@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+#wrap {
+	display: flex;
+	z-index: 1;
+	width: 1330px;
+	margin: 20px auto 0 auto;
+    font-family: Nanum Gothic;
+}
+
+/* a 태그 데코레이션 제거 */
+a, a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* 좌측메뉴 */
+#left {
+    float: left;
+    width: 190px;
+    height: 750px;
+    margin: 10px 30px 10px 0;
+    padding: 20px;
+    border: 1px solid rgb(141,141,141);
+    border-radius: 20px;
+}
+
+/* 죄측메뉴 서브 */
+#sub_menu {
+    font-size: 10pt;
+}
+
+/* 우측 본문 */
+#container {
+    float: left;
+    width: 1120px;
+    padding: 20px 0;
+}
+
+/* 현재창 title */
+header {
+	margin: 10px 0;
+}
+
+
+/* 셀렉트 박스 */
+#select_box {
+	width: 110px;
+	height: 30px;
+	font-size: 10pt;
+	text-align-last: center;
+}
+
+/* 상세 보기 상단(접수일, 처리 완료일, 처리 상태) */
+#detail_title {
+	width: 100%; 
+	height: 30px; 
+/*	background: cyan; */ 
+	font-size: 10pt;"
+}
+
+/* 상세보기 내용 */
+#detail_content {
+ 	width: 100%; 
+	height: 520px; 
+/* 	background: orange; */ 
+	margin-top: 20px; 
+	font-size: 10pt;
+}
+
+/* 상세보기 표 얇은 줄 */
+.detail_content_layer1 {
+ 	float: left;
+ 	width: 100%; 
+	height: 40px;
+	border-bottom: 1px solid rgb(141,141,141);
+}
+
+/* 상세보기 표 굵은 줄(내용작성, 이미지, 처리사항메모) */
+.detail_content_layer2 {
+ 	width: 100%; 
+	height: 120px;
+	border-bottom: 1px solid rgb(141,141,141);	
+}
+
+/* 상세보기 내용 제목(ex)접수번호, 신청 ID, 휴대폰번호...) */
+.detail_content_title1 {
+ 	float: left; 
+	height: 40px; 
+/*	background: yellow; */  
+	padding:10px 0 0 10px;
+	border-right: 1px solid rgb(141,141,141);
+}
+
+/* 상세보기 내용 제목(ex)내용작성, 이미지, 처리사항 메모) */
+.detail_content_title2 {
+	float: left; 
+	width: 20%; 
+	height: 120px; 
+/*	dbackground: #F8A1A4; */
+	padding: 50px 0 0 10px;
+	border-right: 1px solid rgb(141,141,141);
+}
+
+/* 상세보기 해당 내용 */
+.detail_content_content {
+	float: left; 
+	height: 40px; 
+/* 	background: green; */ 
+	padding: 10px 0 0 10px;
+}

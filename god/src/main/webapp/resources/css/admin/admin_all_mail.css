@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+    	url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+		url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+		url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+		url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+        local('MaterialIcons-Regular'),
+        url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+        url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+        url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	margin: -2px 0 0 0;
+	vertical-align: middle;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+#wrap {
+	display: flex;
+	z-index: 1;
+	width: 1330px;
+	margin: 20px auto 0 auto;
+    font-family: Nanum Gothic;
+}
+
+/* a 태그 데코레이션 제거 */
+a, a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* 좌측메뉴 */
+#left {
+    float: left;
+    width: 190px;
+    height: 750px;
+    margin: 10px 30px 10px 0;
+    padding: 20px;
+    border: 1px solid rgb(141,141,141);
+    border-radius: 20px;
+}
+
+/* 죄측메뉴 서브 */
+#sub_menu {
+    font-size: 10pt;
+}
+
+/* 우측 본문 */
+#container {
+    float: left;
+    width: 1120px;
+    padding: 20px 0;
+}
+
+/* 현재창 title */
+header {
+    margin: 10px 0;
+}
+
+/* 컨텐츠 title */
+.sub_title {
+    margin: 10px 0;
+    font-size: 11pt;
+}
+
+/* 메일 컨텐츠 */
+#mail_content {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+/* 메일 제목 */
+#mail_title {
+    width: 50%;
+    height: 30px;
+    margin: 0 0 20px 30px;
+    padding: 0 10px;
+    border: 1px solid rgb(141,141,141);
+}
+
+/* 검색 전체 : 검색 버튼까지 포함 */
+#search_area {
+    margin-bottom: 10px;
+    padding: 20px;
+    border: 1px solid rgb(141,141,141);
+}
+
+/* 검색 폼 */
+#search_form {
+    padding-top: 30px;
+    text-align: center;
+}
+
+/* 검색 옵션 */
+#search_op {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 10pt;
+}
+
+/* 상세검색 옵션 행 간격 */
+.detail_tr {
+    height: 40px;
+}
+
+/* 가입일 박스 */
+#sdate, #edate {
+    width: 90px;
+    border: 1px solid rgb(141,141,141);
+    text-align: center;
+}
+
+/* 검색창 텍스트 입력 박스 */
+.text_box {
+    width: 120px;
+    border: 1px solid rgb(141,141,141);
+}
+
+/* 체크박스, 라디오 버튼 위치 조정 */
+label {
+    margin: -2px 0 0 0;
+    vertical-align: middle;
+}
+
+/* 회원리스트 표 */
+#member_list {
+    width: 100%;
+    min-width: 730px;
+    margin: 20px 0;
+    border-top: 1px solid rgb(141,141,141);
+    font-size: 10pt;
+    text-align: center;
+}
+
+/* 회원리스트 첫줄 */
+.list1 {
+    height: 30px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(141,141,141);
+    background-color: rgb(203,203,203);
+}
+
+/* 회원리스트 라인 */
+.list2 {
+    height: 50px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(141,141,141);
+}
+
+/* 페이지 네비게이션 */
+#pagination {
+    width: 330px;
+	margin: 50px auto;
+    font-size: 10pt;
+}

@@ -1,0 +1,545 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+*, ::after, ::before{
+	box-sizing: content-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h4 {
+	font-size: 12px;
+}
+
+label {
+	margin: 0;
+}
+
+body {
+    font-size: 12px;
+    margin: 1px;
+    padding: 0;
+}
+
+caption {
+	padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.address {
+	color: black;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+/* 느낌표 만들기 */
+.my_border {
+    border: 1px solid black;
+    color: red;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+
+.my_border_box2 {
+    border: 1px solid black;
+    border-radius: 1px;
+    color:white;
+    padding: 0 5px;
+    margin-right: 5px;
+    background: gray;
+}
+#wrap {
+    padding: 70px 20px 50px;
+    /* background: cyan; */
+}
+
+#title_wrap {
+    text-align: center;
+    font-size: 20px;
+}
+
+/* /////////////////////////////// 회원 등급 및 쿠폰 박스 시작 //////////////////////// */
+/* 회원 등급 및 쿠폰 정보 레이아웃 */
+#member_order_info_wrap {
+    border: 1px solid #e7e7e7;
+    margin: 30px 0;
+    background: #fafafa;
+}
+
+/* 회원 등급 및 쿠폰 박스 */
+#member_order_info_box {
+    display: table;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#benefit_info {
+    width: 70px;
+    display: table-cell;
+    padding: 0 15px;
+    vertical-align: middle;
+    border-right: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+#member_order_role_info {
+    display: table-cell;
+    padding: 0 15px;
+}
+
+#member_order_role {
+    margin: 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#member_order_role span{
+    margin: 0 2px;
+}
+#member_order_coupon_info {
+    padding: 30px;
+}
+
+#member_order_coupon_info a {
+    margin-right: 20px;
+}
+/* /////////////////////////////// 회원 등급 및 쿠폰 박스 끝//////////////////////// */
+
+/* 주문내역 타이틀 border */
+.order_delivery_title {
+    border-bottom: 2px solid black;
+}
+
+/* ////////////////////////////////구매 리스트 테이블 시작//////////////////////// */
+/* 주문내역 박스 테이블 */
+#order_list_box table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#order_list_box tfoot{
+    background: #f5f5f5;
+}
+
+#order_list_box th {
+    padding: 16px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#order_list_box td {
+    padding: 16px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+/* 주문내역 상품 이미지 크기 */
+#order_list_box img {
+    max-width: 135px;
+    height: 130px;
+}
+
+.prd_detail_center {
+    text-align: center;
+
+}
+
+.prd_detail_left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* ///////////////////////////////////////구매내역 리스트 테이블 끝////////////////// */
+
+#order_tip {
+    color: red;
+    font-size: 11px;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+#order_list_delete_back_wrap {
+    padding: 10px 0 50px;
+}
+
+#order_list_delete a{
+    padding: 4px;
+    border-radius: 4px;
+    background: #8c8c8c;
+}
+
+#order_list_back a{
+    float: right;
+    padding: 4px;
+    border: 1px solid;
+}
+
+
+/* ////////////////////////////주문정보 테이블 시작/////////////////////////////////// */
+#order_member_info table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+    /* background: #fafafa; */
+}
+
+#order_member_info th {
+    border: solid #e7e7e7;
+    border-width: 0 1px 1px 0;
+    padding: 8px 0 8px 10px;
+    text-align: left;
+}
+
+#order_member_info td {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 8px 0 8px 10px;
+}
+
+#order_member_info input {
+    margin: 2px 5px 2px 3px;
+}
+
+#memberPhone1, #memberCellphone1, #selectDomain {
+    margin: 0 5px 0 3px;
+    height: 22px;
+    position: relative;
+    top: 0px;
+}
+/* /////////////////////////////////주문정보 테이블 끝////////////////////////////////////////////////////// */
+
+/* //////////////////////////////배송정보 테이블 시작/////////////////////////////// */
+#order_delivery_member_info table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+#order_delivery_member_info th {
+    border: solid #e7e7e7;
+    border-width: 0px 1px 1px 0;
+    padding: 10px;
+    text-align: left;
+}
+
+#order_delivery_member_info td {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px;
+}
+.txt_input {
+    margin: 4px;
+}
+
+.memberAddress_info {
+    margin-right: 4px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+#order_text {
+    width: 750px;
+    height: 40px;
+    resize: none;
+}
+/* /////////////////////////////////배송정보 테이블 끝/////////////////////////////// */
+
+/* ///////////////////////////////////총 주문금액  할인금액 테이블 시작////////////////////////// */
+#order_all_price table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#order_all_price th{
+    border: 1px solid #e7e7e7;
+    font-size: 14px;
+    padding: 30px;
+}
+
+#order_all_price td {
+    border: 1px solid #e7e7e7;
+    text-align: center;
+    padding: 30px;
+}
+
+#order_all_price a {
+    border: 1px solid #e7e7e7;
+    font-size: 11px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    background: #fafafa;
+}
+
+#discount table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+#discount th {
+    border:1px solid #e7e7e7;
+    padding: 20px;
+}
+
+#discount td {
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+/* ///////////////////////////////////총 주문금액 할인금액 테이블 끝////////////////////////// */
+
+/* ////////////////////////////////////결제 방법 테이블 시작////////////////////////// */
+
+/* 결제 전체 레이아웃 */
+#pay_wrap {
+    padding-right: 290px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+    /* height: 384px; */
+    height: 234px;
+}
+
+/* 결제 방법 선택 및 변경 */
+#pay_ment {
+    width: 100%;
+    float: left;
+}
+
+/* 결제 방법 선택 라디오 간격 */
+#pay_div {
+    padding: 17px 20px;
+    border: 1px solid black;
+    border-right: 0;
+}
+
+/* 라디오 선택시 변경되는 레이아웃 */
+#pay_system_way {
+    padding: 10px 20px;
+}
+
+/* 무통장 입금 하단 설명란도 같이 hide */
+.deposit_way1 {
+    /* display: none; */
+}
+
+#deposit_way1 th{
+    padding: 10px;
+}
+
+/* 무통장 입금 방식 select태그 a 간격 */
+#select_pay1 {
+    margin-bottom: 10px;
+}
+
+#deposit_way1 a {
+    border: 1px solid black;
+}
+
+.deposit_way1 p {
+    margin-left: 20px;
+    padding: 30px 0;
+}
+
+/* 카드 결제 */
+.deposit_way2 {
+    display: none;
+    padding: 30px;
+}
+
+/* 휴대폰 결제 */
+.deposit_way3 {
+    display: none;
+    padding: 30px;
+}
+
+/* ///////////////////에스크로 결제 //////////////////////*/
+.deposit_way4 {
+    display: none;
+}
+
+#deposit_way4 {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#deposit_way4 th {
+    border: solid black;
+    border-width: 1px 0;
+    padding: 8px;
+}
+
+#deposit_way4 td {
+    border: solid black;
+    border-width: 1px 0 1px 1px;
+    padding: 8px;
+}
+/* ///////////////////에스크로 결제 //////////////////////*/
+
+/* PAYCO 결제 */
+.deposit_way5 {
+    display: none;
+}
+
+.deposit_way5 p {
+    margin: 5px 0;
+}
+
+
+/* 카카오 페이 결제 */
+.deposit_way6 {
+    display: none;
+}
+
+.deposit_way6 p {
+    margin: 5px 0;
+}
+
+/* ////////////////////////총 결제 금액 및 결제 버튼 박스 시작 /////////////// */
+/* 총 결제 금액 및 결제 버튼 박스 */
+#pay_btn_box {
+    width: 276px;
+    /*추가*/
+    height: 233px;
+    float: right;
+    margin-right: -290px;
+    text-align: right;
+    border: 1px solid black;
+    padding-right: 12px;
+}
+
+/* 결제방식 이름 표시 */
+#pay_btn_box h4 {
+    text-align: right;
+}
+
+/* 총 금액 표시 */
+#pay_all_price {
+    text-align: right;
+    font-size: 26px;
+    border:0;
+    color: red;
+}
+
+/* 결제하기 버튼 */
+#pay_btn {
+    text-align: center;
+    padding: 30px;
+}
+
+/* 결제하기 버튼 꾸미기 */
+#pay_btn a {
+    background: black;
+    padding: 15px 80px;
+    color: white;
+}
+
+#mileage_price_wrap {
+    padding: 30px;
+}
+
+#mileage_price_wrap dl {
+    border: 1px solid #e7e7e7;
+    padding: 15px;
+    font-size: 10px;
+    margin: 0;
+}
+
+#mileage_price_wrap dt{
+    float: left;
+    display:inline-block;
+    margin-bottom: 5px;
+}
+
+#mileage_price_wrap dd {
+
+    margin-bottom: 5px;
+}
+/* ////////////////////////총 결제 금액 및 결제 버튼 박스 끝 /////////////// */
+
+.nointerset_use_info_box {
+    margin-bottom: 20px;
+    border: 1px solid #e7e7e7;
+}
+
+.nointerset_use_info_box h3 {
+    border-bottom: 1px solid #e7e7e7;
+    margin:10px;
+    padding-bottom: 10px;
+}
+
+.nointerset_use_info_box p {
+    margin: 5px 10px;
+}
+
+.nointerset_use_info_box h4 {
+    margin: 20px 10px;
+}

@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+/* nanum-gothic-regular - latin */
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/nanum-gothic-v17-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('NanumGothic'),
+	     url('/fonts/nanum-gothic-v17-latin-regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff2') /* Super Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+	     url('/fonts/nanum-gothic-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	     url('/fonts/nanum-gothic-v17-latin-regular.svg#NanumGothic') format('svg'); /* Legacy iOS */
+}
+
+/* 구글 머티리얼 아이콘 : 오프라인 */
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../css/google/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+	     local('MaterialIcons-Regular'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.woff) format('woff'),
+	     url(../../css/google/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+ 
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body {
+	font-family: Nanum Gothic;
+    margin: 0;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.txt_input{
+	margin: 4px;
+}
+
+.check_input {
+	margin: 4px;
+	position: relative;
+	top: -2px;
+	vertical-align: middle;
+}
+
+/* 회원가입 폼 레이아웃 */
+#modify_wrap {
+    width: 100%;
+    height: 300px;
+    max-width: 1482px;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    padding: 70px 20px 70px;
+    box-sizing: border-box;
+}
+
+/* 회원가입 입력란 및 혜택 레이아웃 */
+#modify_div {
+	padding-bottom: 30px;
+}
+
+#join_member_name_wrap {
+    border: 1px solid #e7e7e7;
+    width: 100%;
+    display: table;
+}
+
+#member_img_box {
+    display: table-cell;
+    width: 100px;
+    padding: 10px 0;
+}
+
+#join_member_name_wrap p img {
+    padding: 0 10px;
+    border-right: 1px solid #e7e7e7;
+}
+
+#member_content_role {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#member_content_role span {
+    margin: 0 5px;
+}
+
+#modify_div table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#modify_div tbody th {
+    border: solid #e7e7e7;
+    border-width: 1px 0;
+    padding: 6px;
+	text-align: left;
+}
+
+#modify_div tbody td {
+    border: solid #e7e7e7;
+    border-width: 1px 0 1px 1px;
+    padding: 6px;
+}
+
+/* 우편번호 버튼 */
+.address {
+	color: black;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+/* 회원가입 버튼 */
+#updateMemberBtn {
+	width: 110px;
+	height: 30px;
+	border: 0;
+	color: white;
+	font-size: 12px;
+	cursor: pointer;
+	background: black;
+}
+
+#updateMemberBtn:hover {
+	background:#eeeeee;
+    color:black;
+}
+
+#updateResetBtn {
+	width: 110px;
+	height: 30px;
+	font-size: 12px;
+	border: 0;
+	cursor: pointer;
+	background:#d9d9d9;
+}
+
+#updateResetBtn:hover {
+	background:#eeeeee;
+}
+
+#memberOut {
+    float:right;
+    padding-top: 12px;
+}
+
+#memberOut button {
+    border: 1px solid;
+    padding: 5px;
+}
+
+#memberOut button:hover {
+	text-decoration: none;
+	color: black;
+}

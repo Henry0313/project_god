@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.god.mapper.OrderMapper">
+
+	<!-- 주문 정보 -->
+	<insert id="orderInfo" parameterType="OrderVO">
+		INSERT INTO orders 
+			   ( order_id, 
+				 member_id, 
+				 order_name, 
+				 order_zip, 
+				 order_addr, 
+				 order_addr_detail, 
+				 order_phone, 
+				 order_cellphone, 
+				 order_msg, 
+				 order_amount,
+				 order_date,
+				 order_delivery )
+		VALUES ( #{orderId},
+				 #{memberId},
+				 #{orderName},
+				 #{orderZip},
+				 #{orderAddr},
+				 #{orderAddrDetail},
+				 #{orderPhone},
+				 #{orderCellphone},
+				 #{orderMsg},
+				 #{orderAmount},
+				 SYSDATE,
+				 #{orderDelivery} )
+	</insert>	
+	
+	<!-- 주문 상세 정보 -->
+	<insert id="orderDetailInfo" parameterType="OrderDetailVO">
+		INSERT INTO order_detail 
+			   ( order_detail_id, 
+				 order_id, 
+				 product_id, 
+				 cart_quan,
+				 cart_color,
+				 cart_size )
+		VALUES ( order_detail_seq.NEXTVAL,
+				 #{orderId},
+				 #{productId},
+				 #{cartQuan},
+				 #{cartColor},
+				 #{cartSize} )
+	</insert>
+<!-- 	<insert id="orderDetailInfo" parameterType="OrderDetailVO">
+		INSERT INTO order_detail 
+			   ( order_detail_id, 
+				 order_id, 
+				 product_id, 
+				 cart_quan,
+				 cart_color,
+				 cart_size )
+		SELECT order_detail_seq.NEXTVAL,
+			   #{orderId},
+			   #{productId},
+			   #{cartQuan},
+			   #{cartColor},
+			   #{cartSize}
+		  FROM cart
+	</insert> -->	
+
+	<!-- 카트 삭제하기 -->
+	<!-- <delete id="cartAllDelete">
+		DELETE cart
+		 WHERE member_id = #{memberId}
+	</delete> -->
+	
+	<select id="orderListId" parameterType="String" resultType="com.project.god.domain.OrderVO">
+		SELECT *
+	  	  FROM orders
+	     WHERE member_id = #{memberId}
+	</select>
+	
+	<!-- 특정 유저의 주문 목록 -->
+	<select id="orderList"  parameterType="String" resultType="com.project.god.domain.OrderDetailVO">
+			SELECT o.order_id, o.member_id, o.order_name, o.order_zip, o.order_addr,
+				   o.order_addr_detail, o.order_phone, o.order_cellphone, o.order_msg,
+				   o.order_date, o.order_delivery, o.order_amount,
+	   			   d.order_detail_id, d.product_id, d.cart_quan, d.cart_color, d.cart_size,
+	   			   p.product_name, p.product_thum_img, p.product_list_img, p.product_price2
+			  FROM orders o
+		INNER JOIN order_detail d
+			    ON o.order_id = d.order_id
+		INNER JOIN product p
+		        ON d.product_id = p.product_id
+			 WHERE member_id = #{memberId}
+	</select>
+
+	<!-- 주문목록(관리자용) -->
+	<select id="getOrderList" resultType="com.project.god.domain.OrderVO">
+		  SELECT * 
+		    FROM (SELECT
+					  m.*,
+				   FLOOR((ROWNUM - 1)/#{rowsPerPage} + 1) page
+      			    FROM (SELECT * 
+        	  			   FROM orders
+             		   ORDER BY order_id ASC) m)
+           WHERE page = #{page}
+	</select>
+	
+	<select id="getOrderListCount" resultType="int">
+		 SELECT COUNT(*) 
+		   FROM orders
+	</select>
+	
+	<!-- 주문목록 상세보기-->
+	<select id="getOrderView" 	parameterType="String" resultType="com.project.god.domain.OrderDetailVO">
+			SELECT o.order_id, o.member_id, o.order_name, o.order_zip, o.order_addr,
+				   o.order_addr_detail, o.order_phone, o.order_cellphone, o.order_msg,
+				   o.order_date, o.order_delivery, o.order_amount,
+	   			   d.order_detail_id, d.product_id, d.cart_quan, d.cart_color, d.cart_size,
+	   			   p.product_name, p.product_thum_img, p.product_list_img, p.product_price2,
+	   			   m.member_name, m.member_cellphone
+  			  FROM orders o
+		INNER JOIN order_detail d
+	            ON o.order_id = d.order_id
+	    INNER JOIN product p
+	    		ON d.product_id = p.product_id
+	    INNER JOIN member m
+	    		ON o.member_id = m.member_id
+	  	     WHERE o.order_id = #{orderId}
+	</select>
+	
+	<!-- 주문상태처리 -->
+	<update id="orderDeliveryUpdate" parameterType="com.project.god.domain.OrderVO">
+		UPDATE orders 
+		   SET order_delivery = #{orderDelivery}
+		 WHERE order_id= #{orderId}	
+	</update>
+	
+	<!-- 주문 완료 후 해당 제품 재고 감소 -->
+	<update id="productQuanUpdate" parameterType="com.project.god.domain.ProductVO">
+		UPDATE product
+	   	   SET product_quan = product_quan - #{productQuan}
+		 WHERE product_id = #{productId} 
+	</update>
+
+</mapper>

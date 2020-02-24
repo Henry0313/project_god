@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+    <!-- webjars javascript path : css, jquery, jqueryui, angularjs, bootstrap, googlematerial, summernote -->
+    <resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+	
+	<!-- common jsp -->
+	<resources mapping="/common/**" location="/resources/common/" />
+	
+	<!-- admin jsp -->
+	<resources mapping="/common/admin/**" location="/resources/common/admin/" />
+	
+	<!-- common CSS -->
+	<resources mapping="/css/common/**" location="/resources/css/common/" />
+	
+	<!-- admin CSS -->
+	<resources mapping="/css/admin/**" location="/resources/css/admin/" />
+	
+	<!-- member CSS -->
+	<resources mapping="/css/member/**" location="/resources/css/member/" />
+	
+	<!-- custom javascript -->
+	<resources mapping="/js/custom/**" location="/resources/js/custom/" />
+	
+	<!-- admin javascript -->
+	<resources mapping="/js/admin/**" location="/resources/js/admin/" />
+	
+	<!-- member javascript -->
+	<resources mapping="/js/member/**" location="/resources/js/member/" />
+	
+	<!-- jQuery 3.4.1 -->
+	<resources mapping="/jQuery/**" location="/resources/js/jQuery/" />
+	
+	<!-- jQueryUI 1.12.1 -->
+	<resources mapping="/jQueryUI/**" location="/resources/js/jQueryUI/" />
+	
+	<!-- AngularJS 1.7.9 -->
+	<resources mapping="/angularjs/**" location="/resources/js/angularjs/" />
+	
+	<!-- bootstrap 4.4.1 -->
+	<resources mapping="/bootstrap/**" location="/resources/js/bootstrap/" />
+	
+	<!-- google material icons -->
+	<resources mapping="/google/**" location="/resources/css/google/" />
+	
+	<!-- fonts : Nanum Gothic -->
+	<resources mapping="/fonts/**" location="/resources/css/fonts/" />
+	
+	<!-- summernote 0.8.15 -->
+	<resources mapping="/summernote/**" location="/resources/summernote-master/" />
+	
+    <!-- file upload -->
+    <resources mapping="/upload/**" location="file:///F:/upload/" />
+
+	<!-- image path -->  
+	<!-- 참고로 아래 경로는 F:/upload/image의 네트워크 변환 경로 -->  
+	<!--  <resources mapping="/image/**"  location="file:///F:/upload/image/" />   -->
+	<!-- <resources mapping="/image/**"  location="/Users/dongwoo/Desktop/Project/upload/" /> -->
+	<resources mapping="/image/**"  location="/resources/image/" />
+	
+	<!-- thumbnail image path -->  
+	<resources mapping="/thumbnail/**"  location="/resources/image/thumbnail/" />
+
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- <beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> -->
+    
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles/tiles-def.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+   
+    <!-- view resolver -->
+    <beans:bean id="contentNegotiationManager"
+            class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+       
+		<!-- <beans:property name="defaultContentType" value="application/json" /> -->
+		<beans:property name="defaultContentType" value="text/html" />
+     
+		<!-- 사용할 front media contentType 지정 -->
+		<beans:property name="mediaTypes">
+			<beans:map>
+				<beans:entry key="html" value="text/html"/>
+				<beans:entry key="json" value="application/json"/>
+			</beans:map>
+		</beans:property>
+       
+	</beans:bean>
+ 
+	<beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+         
+		<beans:property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+           
+		<beans:property name="viewResolvers">
+			<beans:list>
+             
+				<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+             
+				<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+					<beans:property name="prefix" value="/WEB-INF/views/" />
+					<beans:property name="suffix" value=".jsp"/>
+					<beans:property name="order" value="2" />
+				</beans:bean>
+              	
+				<!-- Apache Tiles -->
+				<beans:bean id="tilesViewResolver"
+					class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+				    <beans:property name="viewClass"
+				        value="org.springframework.web.servlet.view.tiles3.TilesView" />
+				    <beans:property name="order" value="1" />
+				</beans:bean>
+				
+ 
+			</beans:list>
+		</beans:property>
+  
+		<!-- 위에서 지정된 media에서 다루지 못한 media를 다루는 ViewResolver -->
+		<beans:property name="defaultViews">
+			<beans:list>
+				<!-- deprecated : since Spring 4.3 부터 대체됨 -->
+				<beans:bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+			</beans:list>
+		</beans:property>
+     
+	</beans:bean>
+	
+	<!-- controller -->
+	<context:component-scan base-package="com.project.god.controller" />
+	
+	<!-- admin controller -->
+	<context:component-scan base-package="com.project.god.admin.controller" />
+	
+	<!-- member controller -->
+	<context:component-scan base-package="com.project.god.member.controller" />
+	
+	<!-- board controller -->
+	<context:component-scan base-package="com.project.god.board.controller" />
+	
+	<!-- service -->
+	<context:component-scan base-package="com.project.god.service" />
+	
+	<!-- service impl -->
+	<context:component-scan base-package="com.project.god.service.impl" />
+	
+	<!-- domain -->
+	<context:component-scan base-package="com.project.god.domain" />
+	
+	<!-- dao -->
+	<context:component-scan base-package="com.project.god.dao" />
+	
+	<!-- util -->
+	<context:component-scan base-package="com.project.god.util" />
+   
+	<!-- mapper -->
+	<context:component-scan base-package="com.project.god.mapper" />
+	
+	<!-- validator -->
+	<context:component-scan base-package="com.project.god.validator" />
+	
+	<!-- TypeHandler : Mybatis(date problem) -->
+	<context:component-scan base-package="com.project.god.typehandler" />
+	
+    <!-- Model : fileUpload -->
+    <context:component-scan base-package="com.project.god.domain.fileupload" />
+	
+	<!-- Fileupload : 파일 관리자 id(multipartResolver)는 가급적 그대로 사용할 것! -->    
+    <!-- <beans:bean id="multipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+                  <beans:property name="maxUploadSize" value="52428800" />  
+    </beans:bean>   -->        
+     
+    <!-- File repository : 파일 저장소 -->  
+    <!-- <beans:bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+        <beans:constructor-arg>
+           <beans:value>파일 저장 폴더</beans:value>
+        </beans:constructor-arg>
+    </beans:bean> -->
+	
+	
+</beans:beans>
