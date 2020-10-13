@@ -48,7 +48,7 @@
 		<hibernate-validator-version>6.1.0.Final</hibernate-validator-version>
 
 		<!-- Test/SpringTest/MockTest -->
-		<junit-version>4.12</junit-version>
+		<junit-version>4.13.1</junit-version>
 		<mockito-version>2.23.4</mockito-version>
 		<json-path-version>4.1.2</json-path-version>
 		<hamcrest-version>2.2</hamcrest-version>
