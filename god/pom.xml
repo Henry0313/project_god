@@ -39,7 +39,7 @@
 		<!-- DB/ORM -->
 		<oracle-version>12.1.0.2</oracle-version>
 		<commons-dbcp-version>2.6.0</commons-dbcp-version>
-		<mybatis-version>3.5.3</mybatis-version>
+		<mybatis-version>3.5.6</mybatis-version>
 		<mybatis-spring-version>2.0.3</mybatis-spring-version>
 
 		<!-- JPA/Hivernator Validator -->
