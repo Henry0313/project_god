@@ -45,7 +45,7 @@
 		<!-- JPA/Hivernator Validator -->
 		<spring-data-commons-version>2.2.3.RELEASE</spring-data-commons-version>
 		<hibernate-jpa-version>1.0.2.Final</hibernate-jpa-version>
-		<hibernate-validator-version>6.1.0.Final</hibernate-validator-version>
+		<hibernate-validator-version>6.1.5.Final</hibernate-validator-version>
 
 		<!-- Test/SpringTest/MockTest -->
 		<junit-version>4.12</junit-version>
