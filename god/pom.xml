@@ -54,7 +54,7 @@
 		<hamcrest-version>2.2</hamcrest-version>
 
 		<!-- REST/JSON -->
-		<jackson-version>2.10.1</jackson-version>
+		<jackson-version>2.13.4.1</jackson-version>
 
 		<!-- FileUpload/ImageThumbnail -->
 		<commons-fileupload-version>1.4</commons-fileupload-version>
